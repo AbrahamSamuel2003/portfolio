@@ -36,7 +36,8 @@ import {
   Server,
   BarChart3,
   Smartphone as PhoneIcon,
-  Coffee
+  Coffee,
+  Monitor
 } from "lucide-react";
 
 function App() {
@@ -88,21 +89,38 @@ function App() {
     "Programming Languages": ["Python", "C++", "PHP", "JavaScript", "Kotlin"],
     "Frontend Technologies": ["HTML5", "CSS3", "React", "Tailwind CSS", "FormSubmit"],
     "Mobile & Backend": ["Android", "Kotlin", "Firebase", "MongoDB"],
-    "Tools & Platforms": ["VS Code", "Android Studio", "GitHub", "Git", "Figma"]
+    "Tools & Platforms": ["VS Code", "WordPress", "GitHub", "Android Studio", "Git", "Figma"]
   };
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "Developed a fully responsive e-commerce website with product listings and contact form using FormSubmit without backend.",
-      technologies: ["HTML", "CSS", "JavaScript", "FormSubmit"],
-      category: "Web",
-      gradient: "from-blue-500 to-cyan-500",
+      title: "Voucherly – Desktop Invoicing Solution ⭐",
+      description: "Voucherly is a cross-platform desktop application built using Electron and React to provide a lightweight, offline alternative to subscription-based invoicing tools. The application enables users to manage multiple businesses, generate invoices efficiently, and track financial performance through real-time analytics.",
+      technologies: ["Electron", "React", "Node.js", "Vite", "IPC", "JSON Storage"],
+      category: "Desktop",
+      gradient: "from-blue-600 to-indigo-600",
       details: [
-        "Built with vanilla JavaScript for optimal performance",
-        "Implemented responsive design that works seamlessly across all devices",
-        "Integrated FormSubmit for seamless contact form functionality without server setup",
-        "Optimized loading speed with efficient CSS and image optimization"
+        "Multi-business management with isolated data and configurations",
+        "Invoice creation with smart search and duplication for recurring billing",
+        "Real-time analytics dashboard for monthly and yearly insights",
+        "Offline-first architecture ensuring complete data privacy",
+        "Desktop-web integration using Electron (Main & Renderer processes)",
+        "Implementing IPC for secure communication between processes"
+      ]
+    },
+    {
+      title: "Intern Management System (IMS)",
+      description: "The Intern Management System (IMS) is a web-based platform designed to streamline the internship lifecycle. It enables administrators and team leads to assign tasks, monitor intern performance, and automate evaluation processes through role-based dashboards.",
+      technologies: ["PHP", "MySQL", "Bootstrap 5", "JavaScript", "AJAX"],
+      category: "Web",
+      gradient: "from-emerald-500 to-teal-600",
+      details: [
+        "Role-based dashboards for Admin, Team Lead, and Intern",
+        "Task assignment, submission, and feedback system",
+        "Performance tracking based on completion and deadlines",
+        "Automated evaluation and eligibility tracking",
+        "Implementing role-based authentication and authorization",
+        "Designing relational databases for real-world applications"
       ]
     },
     {
@@ -127,12 +145,12 @@ function App() {
       period: "2024 – 2026",
       icon: GraduationCap,
       color: "text-blue-400",
-      status: "Ongoing",
-      statusColor: "bg-blue-500/20 text-blue-400",
+      status: "Completed",
+      statusColor: "bg-green-500/20 text-green-400",
       achievements: [
-        "Focusing on advanced software development methodologies",
-        "Specializing in web technologies and mobile application development",
-        "Maintaining strong academic performance while building practical skills"
+        "Focused on advanced software development methodologies",
+        "Specialized in web technologies and mobile application development",
+        "Maintained high academic standards and graduated with distinction"
       ]
     },
     {
@@ -150,6 +168,24 @@ function App() {
       ]
     },
     {
+      degree: "WordPress Developer Intern",
+      institution: "Smackcoders",
+      period: "Nov 2024 – Feb 2025",
+      icon: Briefcase,
+      color: "text-indigo-400",
+      status: "Experience Gained",
+      statusColor: "bg-indigo-500/20 text-indigo-400",
+      description: "Completed a WordPress development internship at Smackcoders, where I gained practical experience in building, customizing, and managing websites. Worked with themes, plugins, and basic frontend technologies to create responsive and user-friendly web pages.",
+      achievements: [
+        "Developed and customized WordPress websites using themes and plugins",
+        "Worked with industry-leading plugins like WP Ultimate CSV Importer and AIO Media Library Manager",
+        "Assisted in building responsive layouts using HTML, CSS, and basic JavaScript",
+        "Configured and managed WordPress plugins for enhanced functionality",
+        "Performed website updates, content management, and bug fixes",
+        "Ensured cross-device compatibility and improved UI responsiveness"
+      ]
+    },
+    {
       degree: "Web Development Intern",
       institution: "Dhatchan Academy",
       period: "June 2025",
@@ -162,21 +198,6 @@ function App() {
         "Will be working on modern web frameworks and responsive design",
         "Learning industry best practices for web application development",
         "Collaborating on real-world projects with experienced developers"
-      ]
-    },
-    {
-      degree: "Web Development Intern",
-      institution: "SDW",
-      period: "Completed",
-      icon: Briefcase,
-      color: "text-amber-400",
-      status: "Experience Gained",
-      statusColor: "bg-amber-500/20 text-amber-400",
-      description: "Practical experience in web development technologies and contributed to real-world projects.",
-      achievements: [
-        "Contributed to multiple client projects using HTML, CSS, and JavaScript",
-        "Learned version control and collaborative development workflows",
-        "Implemented responsive designs for various screen sizes"
       ]
     }
   ];
@@ -234,7 +255,7 @@ function App() {
                 <Code2 size={20} className="text-white" />
               </div>
               <div>
-                <span className="text-lg font-bold text-gray-900">Abraham</span>
+                <span className="text-lg font-bold text-gray-900">Abraham Samuel</span>
                 <div className="h-0.5 w-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-1" />
               </div>
             </motion.div>
@@ -266,8 +287,8 @@ function App() {
 
             <div className="flex items-center gap-4">
               <motion.a
-                href="./T-Abraham-Samuel-Resume.pdf"
-                download="Abraham-Samuel-Resume.pdf"
+                href="/Abraham_Samuel_T.pdf"
+                download="Abraham_Samuel_T_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="hidden md:flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all shadow-md"
@@ -310,8 +331,8 @@ function App() {
                   </button>
                 ))}
                 <a
-                  href="./T-Abraham-Samuel-Resume.pdf"
-                  download="Abraham-Samuel-Resume.pdf"
+                  href="/Abraham_Samuel_T.pdf"
+                  download="Abraham_Samuel_T_Resume.pdf"
                   className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg font-medium mt-4 shadow-md"
                 >
                   <Download size={18} />
@@ -367,7 +388,7 @@ function App() {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-3">
-                {["Frontend Developer", "Android Developer", "UI/UX Enthusiast", "Problem Solver"].map((tag, idx) => (
+              {["Frontend Developer", "WordPress Developer", "Android Developer", "Problem Solver"].map((tag, idx) => (
                   <motion.span
                     key={tag}
                     initial={{ opacity: 0, scale: 0 }}
@@ -512,21 +533,24 @@ function App() {
             >
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  As an enthusiastic MCA student, I've cultivated expertise in frontend development, UI design, 
-                  and responsive web technologies. My journey has equipped me with hands-on experience in 
-                  HTML, CSS, JavaScript, React, and Android development using Kotlin and Firebase.
+                  As a skilled MCA graduate from MS University, I've cultivated expertise in frontend development, 
+                  WordPress development, and responsive web technologies. My journey has equipped me with 
+                  hands-on experience in modern frameworks like React and Electron, alongside 
+                  professional WordPress development at Smackcoders.
                 </p>
                 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  What truly drives me is the intersection of technology and human experience. I'm currently 
-                  enhancing my practical skills through an upcoming Web Development Internship at Dhatchan Academy 
-                  (June 2025), where I'll be working on modern web applications using industry best practices.
+                  I specialize in creating elegant, efficient solutions that blend technical precision 
+                  with thoughtful design. From building cross-platform desktop applications like 
+                  Voucherly to managing complex CMS integrations, I'm dedicated to delivering 
+                  high-quality digital experiences.
                 </p>
                 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Beyond technical skills, I'm known for being a quick learner with strong communication abilities 
-                  and a genuine passion for teaching. I enjoy breaking down complex problems into understandable 
-                  solutions and believe that the best technology is created through collaboration and empathy.
+                  Beyond technical skills, I'm known for being a quick learner with strong communication 
+                  abilities. I enjoy breaking down complex problems into understandable solutions and 
+                  believe that the best technology is created through collaboration, empathy, and 
+                  continuous learning.
                 </p>
               </div>
 
@@ -570,16 +594,16 @@ function App() {
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
+                    <span className="text-gray-700">WordPress Development</span>
+                    <span className="text-blue-600 font-medium">Expert</span>
+                  </div>
+                  <div className="flex items-center justify-between">
                     <span className="text-gray-700">Frontend Development</span>
-                    <span className="text-blue-600 font-medium">Advanced</span>
+                    <span className="text-purple-600 font-medium">Advanced</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-700">Android Development</span>
-                    <span className="text-purple-600 font-medium">Intermediate</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-700">UI/UX Design</span>
-                    <span className="text-green-600 font-medium">Learning</span>
+                    <span className="text-green-600 font-medium">Intermediate</span>
                   </div>
                 </div>
               </div>
@@ -1139,7 +1163,13 @@ function App() {
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-4">
                         <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                          {project.category === "Web" ? <Globe className="text-white" size={28} /> : <Smartphone className="text-white" size={28} />}
+                          {project.category === "Web" ? (
+                            <Globe className="text-white" size={28} />
+                          ) : project.category === "Desktop" ? (
+                            <Monitor className="text-white" size={28} />
+                          ) : (
+                            <Smartphone className="text-white" size={28} />
+                          )}
                         </div>
                         <div>
                           <span className="text-white/90 text-sm font-medium">{project.category} Project</span>
