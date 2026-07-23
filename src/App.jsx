@@ -106,9 +106,6 @@ function App() {
         "Direct AI publishing — generate and publish full blog posts from a single text prompt without uploading a file",
         "WooCommerce product support with automated metadata and attribute management",
         "Multilingual import support via WPML and Polylang with per-row language assignment",
-        "Background job scheduling with Action Scheduler for large-scale imports without timeouts",
-        "Automated SEO meta generation (Google title & meta description) per imported post",
-        "Smart duplicate detection to skip rows with identical titles and prevent double-posting",
         "Full rollback system to undo any import batch and cleanly delete created posts",
         "Modular template architecture separating UI (import, logs, settings) from core plugin logic",
         "Live progress tracking with real-time log viewer and import status dashboard in WordPress admin"
