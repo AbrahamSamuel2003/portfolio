@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { 
-  Mail, 
-  Phone, 
-  Linkedin, 
-  Download, 
-  Code2, 
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Download,
+  Code2,
   Smartphone,
   GraduationCap,
   Briefcase,
@@ -94,6 +94,27 @@ function App() {
 
   const projects = [
     {
+      title: "AI Content Importer – WordPress Plugin ⭐",
+      description: "A powerful, AI-driven WordPress plugin that transforms CSV and XML data into high-quality published posts using Google Gemini and Groq AI. Features a real-time chat agent interface, intelligent column mapping, WooCommerce product support, multilingual content generation via WPML/Polylang, and a full rollback system — all built as a professional SaaS-grade admin dashboard.",
+      technologies: ["PHP", "WordPress", "Google Gemini API", "Groq API", "Action Scheduler", "REST API", "Node.js", "JavaScript"],
+      category: "Plugin",
+      gradient: "from-violet-600 to-purple-700",
+      details: [
+        "Multi-provider AI integration supporting Google Gemini 2.5 Flash and Groq for intelligent content generation",
+        "AI-powered automatic column mapping from CSV/XML data to WordPress post fields",
+        "Real-time AI Agent chat interface (Node.js server) for conversational import management",
+        "Direct AI publishing — generate and publish full blog posts from a single text prompt without uploading a file",
+        "WooCommerce product support with automated metadata and attribute management",
+        "Multilingual import support via WPML and Polylang with per-row language assignment",
+        "Background job scheduling with Action Scheduler for large-scale imports without timeouts",
+        "Automated SEO meta generation (Google title & meta description) per imported post",
+        "Smart duplicate detection to skip rows with identical titles and prevent double-posting",
+        "Full rollback system to undo any import batch and cleanly delete created posts",
+        "Modular template architecture separating UI (import, logs, settings) from core plugin logic",
+        "Live progress tracking with real-time log viewer and import status dashboard in WordPress admin"
+      ]
+    },
+    {
       title: "Voucherly – Desktop Invoicing Solution ⭐",
       description: "Voucherly is a cross-platform desktop application built using Electron and React to provide a lightweight, offline alternative to subscription-based invoicing tools. The application enables users to manage multiple businesses, generate invoices efficiently, and track financial performance through real-time analytics.",
       technologies: ["Electron", "React", "Node.js", "Vite", "IPC", "JSON Storage"],
@@ -173,10 +194,11 @@ function App() {
       period: "Nov 2024 – Feb 2025",
       icon: Briefcase,
       color: "text-indigo-400",
-      status: "Experience Gained",
-      statusColor: "bg-indigo-500/20 text-indigo-400",
-      description: "Completed a WordPress development internship at Smackcoders, where I gained practical experience in building, customizing, and managing websites. Worked with themes, plugins, and basic frontend technologies to create responsive and user-friendly web pages.",
+      status: "Completed ✓",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Successfully completed a WordPress development internship at Smackcoders, gaining practical experience in building, customizing, and managing professional WordPress websites. Worked extensively with industry-standard plugins, themes, and frontend technologies to deliver responsive, user-friendly web solutions.",
       achievements: [
+        "Successfully completed the internship and received official certification from Smackcoders",
         "Developed and customized WordPress websites using themes and plugins",
         "Worked with industry-leading plugins like WP Ultimate CSV Importer and AIO Media Library Manager",
         "Assisted in building responsive layouts using HTML, CSS, and basic JavaScript",
@@ -191,13 +213,13 @@ function App() {
       period: "June 2025",
       icon: Briefcase,
       color: "text-purple-400",
-      status: "Upcoming",
-      statusColor: "bg-purple-500/20 text-purple-400",
-      description: "Gaining hands-on experience in modern web development technologies and real-world project implementation.",
+      status: "Completed ✓",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Completed hands-on web development internship gaining practical experience in modern web development technologies and real-world project implementation.",
       achievements: [
-        "Will be working on modern web frameworks and responsive design",
-        "Learning industry best practices for web application development",
-        "Collaborating on real-world projects with experienced developers"
+        "Worked on modern web frameworks and responsive design",
+        "Applied industry best practices for web application development",
+        "Collaborated on real-world projects with experienced developers"
       ]
     }
   ];
@@ -239,7 +261,7 @@ function App() {
       </div>
 
       {/* Navigation - Minimalist Design */}
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200"
@@ -259,7 +281,7 @@ function App() {
                 <div className="h-0.5 w-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-1" />
               </div>
             </motion.div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
               {["home", "about", "education", "skills", "certifications", "projects", "contact"].map((item) => (
@@ -268,11 +290,10 @@ function App() {
                   onClick={() => scrollToSection(item)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-5 py-2.5 rounded-lg transition-all duration-300 ${
-                    activeSection === item 
-                      ? "text-blue-600 font-medium" 
-                      : "text-gray-600 hover:text-blue-600"
-                  }`}
+                  className={`relative px-5 py-2.5 rounded-lg transition-all duration-300 ${activeSection === item
+                    ? "text-blue-600 font-medium"
+                    : "text-gray-600 hover:text-blue-600"
+                    }`}
                 >
                   <span className="capitalize font-medium tracking-wide">{item}</span>
                   {activeSection === item && (
@@ -321,11 +342,10 @@ function App() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                      activeSection === item
-                        ? "bg-blue-50 text-blue-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${activeSection === item
+                      ? "bg-blue-50 text-blue-600 font-medium"
+                      : "text-gray-600 hover:bg-gray-50"
+                      }`}
                   >
                     <span className="capitalize font-medium">{item}</span>
                   </button>
@@ -382,13 +402,13 @@ function App() {
 
               {/* Description */}
               <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-                I'm a passionate MCA student specializing in frontend development and Android applications. 
+                I'm a passionate MCA student specializing in frontend development and Android applications.
                 I create elegant, efficient solutions that blend technical precision with thoughtful design.
               </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-3">
-              {["Frontend Developer", "WordPress Developer", "Android Developer", "Problem Solver"].map((tag, idx) => (
+                {["Frontend Developer", "WordPress Developer", "Android Developer", "Problem Solver"].map((tag, idx) => (
                   <motion.span
                     key={tag}
                     initial={{ opacity: 0, scale: 0 }}
@@ -447,7 +467,7 @@ function App() {
                     <div className="text-2xl font-bold text-gray-900">2+</div>
                     <div className="text-gray-600">Years Experience</div>
                   </div>
-                  
+
                   <div className="text-center p-6 bg-purple-50 rounded-xl">
                     <div className="w-12 h-12 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-3">
                       <Smartphone className="text-white" size={24} />
@@ -455,7 +475,7 @@ function App() {
                     <div className="text-2xl font-bold text-gray-900">8+</div>
                     <div className="text-gray-600">Technologies</div>
                   </div>
-                  
+
                   <div className="text-center p-6 bg-green-50 rounded-xl">
                     <div className="w-12 h-12 mx-auto bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mb-3">
                       <Globe className="text-white" size={24} />
@@ -463,7 +483,7 @@ function App() {
                     <div className="text-2xl font-bold text-gray-900">2</div>
                     <div className="text-gray-600">Live Projects</div>
                   </div>
-                  
+
                   <div className="text-center p-6 bg-amber-50 rounded-xl">
                     <div className="w-12 h-12 mx-auto bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center mb-3">
                       <Award className="text-white" size={24} />
@@ -485,7 +505,7 @@ function App() {
                         <div className="font-medium">abrahamsamuel645@gmail.com</div>
                       </div>
                     </a>
-                    
+
                     <a href="tel:6383813648" className="flex items-center gap-3 text-gray-600 hover:text-green-600 transition-colors group">
                       <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
                         <Phone size={18} className="text-green-600" />
@@ -533,23 +553,23 @@ function App() {
             >
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  As a skilled MCA graduate from MS University, I've cultivated expertise in frontend development, 
-                  WordPress development, and responsive web technologies. My journey has equipped me with 
-                  hands-on experience in modern frameworks like React and Electron, alongside 
+                  As a skilled MCA graduate from MS University, I've cultivated expertise in frontend development,
+                  WordPress development, and responsive web technologies. My journey has equipped me with
+                  hands-on experience in modern frameworks like React and Electron, alongside
                   professional WordPress development at Smackcoders.
                 </p>
-                
+
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  I specialize in creating elegant, efficient solutions that blend technical precision 
-                  with thoughtful design. From building cross-platform desktop applications like 
-                  Voucherly to managing complex CMS integrations, I'm dedicated to delivering 
+                  I specialize in creating elegant, efficient solutions that blend technical precision
+                  with thoughtful design. From building cross-platform desktop applications like
+                  Voucherly to managing complex CMS integrations, I'm dedicated to delivering
                   high-quality digital experiences.
                 </p>
-                
+
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Beyond technical skills, I'm known for being a quick learner with strong communication 
-                  abilities. I enjoy breaking down complex problems into understandable solutions and 
-                  believe that the best technology is created through collaboration, empathy, and 
+                  Beyond technical skills, I'm known for being a quick learner with strong communication
+                  abilities. I enjoy breaking down complex problems into understandable solutions and
+                  believe that the best technology is created through collaboration, empathy, and
                   continuous learning.
                 </p>
               </div>
@@ -621,7 +641,7 @@ function App() {
                       <p className="text-sm text-gray-600">Always starting with the user's needs and experience</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Zap className="text-blue-600" size={16} />
@@ -631,7 +651,7 @@ function App() {
                       <p className="text-sm text-gray-600">Writing maintainable, scalable, and performant code</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Coffee className="text-purple-600" size={16} />
@@ -817,7 +837,7 @@ function App() {
                   <h4 className="font-bold text-gray-900 mb-2">Frontend Development</h4>
                   <p className="text-gray-600 text-sm">Creating responsive, accessible web interfaces with modern frameworks</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
                     <PhoneIcon className="text-white" size={28} />
@@ -825,7 +845,7 @@ function App() {
                   <h4 className="font-bold text-gray-900 mb-2">Mobile Development</h4>
                   <p className="text-gray-600 text-sm">Building native Android applications with Kotlin and Firebase</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
                     <Cloud className="text-white" size={28} />
@@ -988,7 +1008,7 @@ function App() {
                     <p className="text-purple-600">NPTEL Certification</p>
                   </div>
                 </div>
-                
+
                 <div className="bg-white rounded-xl p-6 border border-gray-200">
                   <h4 className="text-lg font-bold text-gray-900 mb-2">Enhancing Soft Skills and Personality</h4>
                   <div className="flex items-center gap-2 text-gray-500 mb-4">
@@ -1167,6 +1187,8 @@ function App() {
                             <Globe className="text-white" size={28} />
                           ) : project.category === "Desktop" ? (
                             <Monitor className="text-white" size={28} />
+                          ) : project.category === "Plugin" ? (
+                            <Zap className="text-white" size={28} />
                           ) : (
                             <Smartphone className="text-white" size={28} />
                           )}
@@ -1183,7 +1205,7 @@ function App() {
                   {/* Project Content */}
                   <div className="p-8">
                     <p className="text-gray-700 mb-8 leading-relaxed">{project.description}</p>
-                    
+
                     {/* Key Features */}
                     <div className="mb-8">
                       <h4 className="font-bold text-gray-900 mb-4">Key Features & Implementation:</h4>
@@ -1248,7 +1270,7 @@ function App() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Have a Project in Mind?</h3>
               <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-                I'm always excited to collaborate on interesting projects. Whether it's a web application, 
+                I'm always excited to collaborate on interesting projects. Whether it's a web application,
                 mobile app, or something entirely new, let's discuss how we can bring your ideas to life.
               </p>
               <motion.a
@@ -1305,14 +1327,14 @@ function App() {
                   <p className="text-gray-600">I typically respond within 24 hours</p>
                 </div>
               </div>
-              
+
               <form onSubmit={sendEmail} className="space-y-6">
                 <div>
                   <label className="block text-gray-700 mb-2 font-medium">Your Name</label>
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                     placeholder="John Doe"
                     required
@@ -1323,7 +1345,7 @@ function App() {
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                     placeholder="john@example.com"
                     required
@@ -1334,7 +1356,7 @@ function App() {
                   <textarea
                     rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                     placeholder="Tell me about your project or just say hello..."
                     required
@@ -1380,7 +1402,7 @@ function App() {
                       <p className="text-lg font-medium text-gray-900">abrahamsamuel645@gmail.com</p>
                     </div>
                   </a>
-                  
+
                   <a href="tel:6383813648" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow transition-all group">
                     <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Phone className="text-white" size={24} />
@@ -1390,7 +1412,7 @@ function App() {
                       <p className="text-lg font-medium text-gray-900">6383813648</p>
                     </div>
                   </a>
-                  
+
                   <a href="https://linkedin.com/in/abraham-samuel-ui-uxdesiginer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow transition-all group">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Linkedin className="text-white" size={24} />
@@ -1414,7 +1436,7 @@ function App() {
                     <p className="text-gray-600">Typically replies within a few hours</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-700">Available for:</span>
