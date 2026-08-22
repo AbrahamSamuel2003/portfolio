@@ -10,7 +10,7 @@ import {
 
 /* ─── REUSABLE SECTION HEADER ─── */
 const SectionHeader = ({ badge, title, highlight, sub }) => (
-  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 lg:mb-20">
+  <m.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 lg:mb-20">
     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[#A1A1AA] text-sm font-medium mb-6">
       <Sparkles size={13} className="text-cyan-400" />{badge}
     </div>
@@ -18,7 +18,7 @@ const SectionHeader = ({ badge, title, highlight, sub }) => (
       {title} <span className="gradient-text">{highlight}</span>
     </h2>
     {sub && <p className="text-[#A1A1AA] text-lg max-w-xl mx-auto leading-relaxed">{sub}</p>}
-  </motion.div>
+  </m.div>
 );
 
 export default function App() {
