@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
+import { m, useScroll, AnimatePresence } from "framer-motion";
 import {
   Mail, Phone, Download, Code2, Smartphone, GraduationCap, Briefcase,
   ExternalLink, Sparkles, ChevronRight, Award, Calendar, Globe, Terminal,
@@ -229,12 +229,12 @@ export default function App() {
       </div>
 
       {/* SCROLL PROGRESS */}
-      <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-cyan-400 origin-left z-[100]" style={{ scaleX: scrollYProgress }} />
+      <m.div className="fixed top-0 left-0 right-0 h-[2px] bg-cyan-400 origin-left z-[100]" style={{ scaleX: scrollYProgress, willChange: 'transform' }} />
 
       {/* ── NAVBAR ── */}
       <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-        <motion.div initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="w-full max-w-5xl">
-          <div className="glass rounded-2xl px-5 py-3 flex items-center justify-between border border-white/[0.08] shadow-xl shadow-black/40">
+        <m.div initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="w-full max-w-5xl">
+          <div className="glass-nav rounded-2xl px-5 py-3 flex items-center justify-between shadow-xl shadow-black/40">
             {/* Logo */}
             <div className="flex items-center gap-3 cursor-pointer" onClick={toTop}>
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center font-bold text-[#09090B] text-sm">AS</div>
@@ -251,10 +251,10 @@ export default function App() {
             </div>
             {/* CTA */}
             <div className="flex items-center gap-2">
-              <motion.a href="/Abraham_Samuel_T.pdf" download whileHover={{ scale: 1.03 }}
+              <m.a href="/Abraham_Samuel_T.pdf" download whileHover={{ scale: 1.03 }}
                 className="hidden md:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-cyan-500/30 text-cyan-400 text-sm font-medium hover:bg-cyan-500/10 transition-all">
                 <Download size={14} /> Resume
-              </motion.a>
+              </m.a>
               <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-xl hover:bg-white/[0.05] text-[#A1A1AA]">
                 {mobileMenuOpen ? <X size={19} /> : <Menu size={19} />}
               </button>
@@ -263,8 +263,8 @@ export default function App() {
           {/* Mobile menu */}
           <AnimatePresence>
             {mobileMenuOpen && (
-              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                className="glass mt-2 rounded-2xl border border-white/[0.08] p-4 space-y-1">
+              <m.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                className="glass-nav mt-2 rounded-2xl p-4 space-y-1">
                 {navItems.map(item => (
                   <button key={item} onClick={() => goto(item)}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium capitalize transition-all ${activeSection === item ? "bg-cyan-500/10 text-cyan-400" : "text-[#A1A1AA] hover:text-white hover:bg-white/[0.05]"}`}>
@@ -274,23 +274,23 @@ export default function App() {
                 <a href="/Abraham_Samuel_T.pdf" download className="flex items-center gap-2 px-4 py-2.5 text-cyan-400 text-sm border-t border-white/[0.06] mt-1 pt-3">
                   <Download size={14} /> Download Resume
                 </a>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* ── HERO ── */}
       <section id="home" className="relative min-h-screen flex items-center pt-28 pb-20 px-6 z-10">
         <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1fr_420px] gap-14 items-center">
           {/* Left */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="space-y-8">
+          <m.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="space-y-8">
             {/* Availability */}
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+            <m.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-emerald-500/25 bg-emerald-500/[0.06] text-emerald-400 text-sm font-medium">
               <span className="w-2 h-2 bg-emerald-400 rounded-full pulse-dot" />
               Available for new opportunities
-            </motion.div>
+            </m.div>
             {/* Name */}
             <div className="space-y-2">
               <h1 className="text-6xl md:text-7xl font-bold leading-tight tracking-tight">
@@ -308,14 +308,14 @@ export default function App() {
             </p>
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => goto("projects")}
+              <m.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => goto("projects")}
                 className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-cyan-400 text-[#09090B] font-semibold hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-500/20">
                 Explore My Work <ChevronRight size={17} />
-              </motion.button>
-              <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => goto("contact")}
+              </m.button>
+              <m.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => goto("contact")}
                 className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/[0.12] text-[#FAFAFA] font-medium hover:bg-white/[0.05] hover:border-white/[0.2] transition-all">
                 Get in Touch <Mail size={17} />
-              </motion.button>
+              </m.button>
             </div>
             {/* Social row */}
             <div className="flex items-center gap-3 pt-2">
@@ -331,9 +331,9 @@ export default function App() {
               <div className="w-px h-5 bg-white/[0.1] mx-1" />
               <span className="text-[#A1A1AA] text-sm">abrahamsamuel645@gmail.com</span>
             </div>
-          </motion.div>
+          </m.div>
           {/* Right – Stats glass card */}
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="space-y-4">
+          <m.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="space-y-4">
             <div className="glass rounded-3xl p-7 border border-white/[0.08] relative">
               <div className="absolute -inset-px bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/5 rounded-3xl pointer-events-none" />
               <div className="grid grid-cols-2 gap-4">
@@ -364,7 +364,7 @@ export default function App() {
               </div>
             </div>
             {/* Floating identity card */}
-            <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            <m.div animate={{ y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="glass rounded-2xl px-5 py-4 border border-white/[0.08] flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center font-bold text-[#09090B] text-sm flex-shrink-0">AS</div>
               <div className="flex-1 min-w-0">
@@ -375,8 +375,8 @@ export default function App() {
                 <span className="w-2 h-2 bg-emerald-400 rounded-full pulse-dot" />
                 <span className="text-emerald-400 text-xs">Online</span>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 
@@ -386,7 +386,7 @@ export default function App() {
           <SectionHeader badge="About Me" title="More Than" highlight="Just Code" sub="I believe in creating technology that's not just functional, but meaningful and accessible" />
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left text */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
+            <m.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
               {["As a skilled MCA graduate from MS University, I've cultivated expertise in frontend development, WordPress development, and responsive web technologies. My journey has equipped me with hands-on experience in modern frameworks like React and Electron, alongside professional WordPress development at Smackcoders.",
                 "I specialize in creating elegant, efficient solutions that blend technical precision with thoughtful design — from building cross-platform desktop applications like Voucherly to crafting custom AI-powered WordPress plugins.",
                 "Beyond technical skills, I'm a quick learner with strong communication abilities. I enjoy breaking down complex problems into understandable solutions through collaboration, empathy, and continuous learning."
@@ -396,17 +396,17 @@ export default function App() {
               {/* Trait cards */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {traits.map((t, i) => (
-                  <motion.div key={t.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  <m.div key={t.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                     className="glass rounded-2xl p-5 border border-white/[0.07] hover:border-white/[0.14] transition-all group">
                     <div className={`w-10 h-10 rounded-xl ${t.bg} flex items-center justify-center mb-3`}><t.icon className={t.clr} size={20} /></div>
                     <h4 className="font-semibold text-[#FAFAFA] text-sm mb-1">{t.title}</h4>
                     <p className="text-[#A1A1AA] text-xs leading-relaxed">{t.desc}</p>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
             {/* Right */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-5">
+            <m.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-5">
               {/* Current Focus */}
               <div className="glass rounded-2xl p-7 border border-cyan-500/20">
                 <div className="flex items-center gap-3 mb-5">
@@ -438,7 +438,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -449,7 +449,7 @@ export default function App() {
           <SectionHeader badge="Journey & Growth" title="Education &" highlight="Experience" sub="My academic journey and professional development timeline" />
           <div className="space-y-6">
             {education.map((edu, i) => (
-              <motion.div key={edu.degree} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <m.div key={edu.degree} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <div className={`glass rounded-2xl p-7 border border-white/[0.07] border-l-2 ${accentBorder(edu.accent)} hover:border-white/[0.12] transition-all group`}>
                   <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
                     <div className="flex items-center gap-4">
@@ -476,7 +476,7 @@ export default function App() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -490,7 +490,7 @@ export default function App() {
             {Object.entries(skillsData).map(([cat, skills], i) => {
               const { icon: Icon, desc } = skillMeta[cat];
               return (
-                <motion.div key={cat} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                <m.div key={cat} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="glass rounded-2xl p-6 border border-white/[0.07] hover:border-cyan-500/20 transition-all duration-300 group hover:-translate-y-1">
                   <div className="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/15 transition-colors">
                     <Icon className="text-cyan-400" size={21} />
@@ -504,12 +504,12 @@ export default function App() {
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
           {/* Bottom summary */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 glass rounded-2xl p-6 border border-white/[0.07]">
+          <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 glass rounded-2xl p-6 border border-white/[0.07]">
             <div className="grid grid-cols-3 gap-6 text-center">
               {[{ icon: Layout, label: "Frontend Dev", desc: "Responsive, accessible interfaces", clr: "text-cyan-400", bg: "bg-cyan-500/10" },
               { icon: PhoneIcon, label: "Mobile Dev", desc: "Native Android with Kotlin & Firebase", clr: "text-violet-400", bg: "bg-violet-500/10" },
@@ -522,7 +522,7 @@ export default function App() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -532,7 +532,7 @@ export default function App() {
           <SectionHeader badge="Certifications & Workshops" title="Learning &" highlight="Credentials" sub="Continuous growth through industry-recognized certifications and workshops" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {visibleCerts.map((c, i) => (
-              <motion.div key={c.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 3) * 0.09 }}
+              <m.div key={c.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 3) * 0.09 }}
                 className="glass rounded-2xl p-6 border border-white/[0.07] hover:border-white/[0.14] transition-all group hover:-translate-y-1">
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-11 h-11 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0`}><c.icon className={c.clr} size={20} /></div>
@@ -545,25 +545,25 @@ export default function App() {
                 <div className="flex flex-wrap gap-2">
                   {c.tags.map(t => <span key={t} className="px-2.5 py-1 text-xs rounded-lg bg-white/[0.05] border border-white/[0.07] text-[#A1A1AA]">{t}</span>)}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
           {certs.length > 6 && (
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
+            <m.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
               <button onClick={() => setShowAllCerts(!showAllCerts)}
                 className="px-7 py-3 rounded-xl border border-white/[0.1] text-[#A1A1AA] text-sm font-medium hover:text-white hover:border-white/[0.2] hover:bg-white/[0.05] transition-all">
                 {showAllCerts ? "Show Less" : `Show All ${certs.length} Credentials`}
               </button>
-            </motion.div>
+            </m.div>
           )}
           {/* Stats bar */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8 glass rounded-2xl p-6 border border-white/[0.07]">
+          <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8 glass rounded-2xl p-6 border border-white/[0.07]">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[["6+", "Certifications"], ["3+", "Workshops"], ["4", "Tech Domains"], ["2024–25", "Active Period"]].map(([v, l]) =>
                 <div key={l}><div className="text-2xl font-bold gradient-text mb-1">{v}</div><div className="text-[#A1A1AA] text-xs">{l}</div></div>
               )}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -576,7 +576,7 @@ export default function App() {
         {/* ── Desktop: two-column grid ── */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-6">
           {projects.map((p, i) => (
-            <motion.div key={p.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
+            <m.div key={p.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
               className="glass rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.14] transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
               {/* Gradient header */}
               <div className={`relative h-36 bg-gradient-to-br ${p.gradient} p-6 flex items-end overflow-hidden`}>
@@ -621,7 +621,7 @@ export default function App() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
@@ -633,7 +633,7 @@ export default function App() {
             style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
           >
             {projects.map((p, i) => (
-              <motion.div
+              <m.div
                 key={p.title}
                 className="project-card glass rounded-2xl overflow-hidden border border-white/[0.07] flex-shrink-0"
                 style={{ scrollSnapAlign: "start", width: "85vw" }}
@@ -688,7 +688,7 @@ export default function App() {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
             {/* Trailing spacer so last card doesn't hug right edge */}
             <div className="flex-shrink-0 w-2" aria-hidden="true" />
@@ -718,7 +718,7 @@ export default function App() {
           <SectionHeader badge="Get In Touch" title="Let's Work" highlight="Together" sub="Have a project in mind? I'd love to hear about it" />
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             {/* Left info */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-8">
+            <m.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-8">
               <div className="space-y-5">
                 {[
                   { icon: Mail, label: "Email", val: "abrahamsamuel645@gmail.com", href: "mailto:abrahamsamuel645@gmail.com", clr: "text-cyan-400", bg: "bg-cyan-500/10" },
@@ -735,19 +735,19 @@ export default function App() {
                 <p className="text-[#A1A1AA] text-sm leading-relaxed">I typically respond to messages within 24 hours. Whether it's a full project, freelance work, or just a quick question — I'm happy to talk.</p>
                 <div className="flex items-center gap-2 text-emerald-400 text-sm"><span className="w-2 h-2 bg-emerald-400 rounded-full pulse-dot" />Available for new projects</div>
               </div>
-            </motion.div>
+            </m.div>
             {/* Right form */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <m.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="glass rounded-2xl p-8 border border-white/[0.07]">
                 <h3 className="font-bold text-[#FAFAFA] text-xl mb-6">Send a Message</h3>
                 {emailSent ? (
-                  <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center justify-center py-16 gap-4">
+                  <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center justify-center py-16 gap-4">
                     <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                       <Check className="text-emerald-400" size={32} />
                     </div>
                     <p className="text-[#FAFAFA] font-semibold">Message Sent!</p>
                     <p className="text-[#A1A1AA] text-sm">I'll get back to you soon.</p>
-                  </motion.div>
+                  </m.div>
                 ) : (
                   <form onSubmit={sendEmail} className="space-y-5">
                     {[
@@ -767,14 +767,14 @@ export default function App() {
                         value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-[#FAFAFA] placeholder-[#52525B] text-sm focus:outline-none focus:border-cyan-500/40 focus:bg-white/[0.06] transition-all resize-none" />
                     </div>
-                    <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                    <m.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                       className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-cyan-400 text-[#09090B] font-semibold hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-500/20">
                       <Send size={16} /> Send Message
-                    </motion.button>
+                    </m.button>
                   </form>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -790,10 +790,10 @@ export default function App() {
             </div>
           </div>
           <p className="text-[#A1A1AA] text-xs">© 2025 Abraham Samuel T. All rights reserved.</p>
-          <motion.button onClick={toTop} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
+          <m.button onClick={toTop} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
             className="w-10 h-10 rounded-xl border border-white/[0.1] bg-white/[0.04] flex items-center justify-center text-[#A1A1AA] hover:text-cyan-400 hover:border-cyan-500/30 transition-all">
             <ArrowUp size={17} />
-          </motion.button>
+          </m.button>
         </div>
       </footer>
 
