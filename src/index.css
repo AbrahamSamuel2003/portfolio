@@ -117,6 +117,15 @@ body {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
+/* ── PROJECT CAROUSEL (mobile) ── */
+.project-scroll {
+  -ms-overflow-style: none;   /* IE / Edge */
+  scrollbar-width: none;       /* Firefox */
+}
+.project-scroll::-webkit-scrollbar {
+  display: none;               /* Chrome / Safari / Opera */
+}
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
 

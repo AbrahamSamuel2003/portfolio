@@ -10,7 +10,7 @@ import {
 
 /* ─── REUSABLE SECTION HEADER ─── */
 const SectionHeader = ({ badge, title, highlight, sub }) => (
-  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 lg:mb-20">
     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[#A1A1AA] text-sm font-medium mb-6">
       <Sparkles size={13} className="text-cyan-400" />{badge}
     </div>
@@ -27,6 +27,8 @@ export default function App() {
   const [emailSent, setEmailSent] = useState(false);
   const [showAllCerts, setShowAllCerts] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const projectScrollRef = useRef(null);
   const { scrollYProgress } = useScroll();
   const navItems = ["home", "about", "education", "skills", "certifications", "projects", "contact"];
 
@@ -43,6 +45,33 @@ export default function App() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* Project carousel: IntersectionObserver for active dot */
+  useEffect(() => {
+    const container = projectScrollRef.current;
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll(".project-card"));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = cards.indexOf(entry.target);
+            if (idx !== -1) setActiveProjectIdx(idx);
+          }
+        });
+      },
+      { root: container, threshold: 0.5 }
+    );
+    cards.forEach((c) => obs.observe(c));
+    return () => obs.disconnect();
+  }, []);
+
+  const scrollToProjectCard = (idx) => {
+    const container = projectScrollRef.current;
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll(".project-card"));
+    if (cards[idx]) cards[idx].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+  };
 
   const goto = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setActiveSection(id); setMobileMenuOpen(false); };
   const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -68,6 +97,7 @@ export default function App() {
       description: "A powerful, AI-driven WordPress plugin that transforms CSV and XML data into high-quality published posts using Google Gemini and Groq AI. Features a real-time chat agent interface, intelligent column mapping, WooCommerce product support, multilingual content generation via WPML/Polylang, and a full rollback system — all built as a professional SaaS-grade admin dashboard.",
       technologies: ["PHP", "WordPress", "Google Gemini API", "Groq API", "REST API", "Node.js", "JavaScript"],
       category: "Plugin", gradient: "from-violet-600 to-purple-800",
+      github: "https://github.com/AbrahamSamuel2003/ai-importer-1",
       details: [
         "Multi-provider AI integration supporting Google Gemini 2.5 Flash and Groq",
         "AI-powered automatic column mapping from CSV/XML to WordPress post fields",
@@ -85,6 +115,7 @@ export default function App() {
       description: "Cross-platform desktop application built using Electron and React — a lightweight, offline alternative to subscription-based invoicing tools. Enables multi-business management, smart invoice generation, and real-time financial analytics.",
       technologies: ["Electron", "React", "Node.js", "Vite", "IPC", "JSON Storage"],
       category: "Desktop", gradient: "from-blue-600 to-indigo-800",
+      github: "https://github.com/AbrahamSamuel2003/voucherly",
       details: [
         "Multi-business management with isolated data and configurations",
         "Invoice creation with smart search and duplication for recurring billing",
@@ -99,6 +130,7 @@ export default function App() {
       description: "Web-based platform to streamline the internship lifecycle. Enables administrators and team leads to assign tasks, monitor intern performance, and automate evaluation processes through role-based dashboards.",
       technologies: ["PHP", "MySQL", "Bootstrap 5", "JavaScript", "AJAX"],
       category: "Web", gradient: "from-emerald-600 to-teal-800",
+      github: "https://github.com/AbrahamSamuel2003/intern-management-system",
       details: [
         "Role-based dashboards for Admin, Team Lead, and Intern",
         "Task assignment, submission, and feedback system",
@@ -113,6 +145,7 @@ export default function App() {
       description: "Android app generating personalized workout plans based on user's age, fitness goals, and health conditions.",
       technologies: ["Kotlin", "Firebase", "Android", "XML"],
       category: "Mobile", gradient: "from-rose-600 to-pink-800",
+      github: null,
       details: [
         "Intelligent algorithm for personalized workout generation",
         "Firebase integration for real-time data sync and authentication",
@@ -348,7 +381,7 @@ export default function App() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" className="py-28 px-6 relative z-10">
+      <section id="about" className="py-16 lg:py-28 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionHeader badge="About Me" title="More Than" highlight="Just Code" sub="I believe in creating technology that's not just functional, but meaningful and accessible" />
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -411,7 +444,7 @@ export default function App() {
       </section>
 
       {/* ── EDUCATION & EXPERIENCE ── */}
-      <section id="education" className="py-28 px-6 relative z-10">
+      <section id="education" className="py-16 lg:py-28 px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
           <SectionHeader badge="Journey & Growth" title="Education &" highlight="Experience" sub="My academic journey and professional development timeline" />
           <div className="space-y-6">
@@ -450,7 +483,7 @@ export default function App() {
       </section>
 
       {/* ── SKILLS ── */}
-      <section id="skills" className="py-28 px-6 relative z-10">
+      <section id="skills" className="py-16 lg:py-28 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionHeader badge="Technical Expertise" title="Skills &" highlight="Technologies" sub="A comprehensive toolkit for building modern, scalable applications" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -494,7 +527,7 @@ export default function App() {
       </section>
 
       {/* ── CERTIFICATIONS ── */}
-      <section id="certifications" className="py-28 px-6 relative z-10">
+      <section id="certifications" className="py-16 lg:py-28 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionHeader badge="Certifications & Workshops" title="Learning &" highlight="Credentials" sub="Continuous growth through industry-recognized certifications and workshops" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -535,38 +568,105 @@ export default function App() {
       </section>
 
       {/* ── PROJECTS ── */}
-      <section id="projects" className="py-28 px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <section id="projects" className="py-16 lg:py-28 relative z-10">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeader badge="Project Showcase" title="Featured" highlight="Projects" sub="Real-world applications showcasing problem-solving and technical execution" />
-          <div className="grid lg:grid-cols-2 gap-6">
+        </div>
+
+        {/* ── Desktop: two-column grid ── */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-6">
+          {projects.map((p, i) => (
+            <motion.div key={p.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
+              className="glass rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.14] transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+              {/* Gradient header */}
+              <div className={`relative h-36 bg-gradient-to-br ${p.gradient} p-6 flex items-end overflow-hidden`}>
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3),transparent_60%)]" />
+                <div className="absolute top-4 right-4 w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                  {catIcon(p.category)}
+                </div>
+                <div className="relative z-10">
+                  <span className="text-white/70 text-xs font-medium uppercase tracking-wider">{p.category} Project</span>
+                  <h3 className="text-white font-bold text-lg leading-tight mt-0.5">{p.title}</h3>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-6 space-y-5">
+                <p className="text-[#A1A1AA] text-sm leading-relaxed">{p.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {p.technologies.map(t => (
+                    <span key={t} className="px-2.5 py-1 text-xs rounded-lg bg-white/[0.05] border border-white/[0.07] text-[#A1A1AA] hover:text-cyan-400 hover:border-cyan-500/20 transition-colors">{t}</span>
+                  ))}
+                </div>
+                <div>
+                  <h4 className="text-[#FAFAFA] font-semibold text-sm mb-3">Key Features:</h4>
+                  <ul className="space-y-2">
+                    {p.details.map((d, j) => (
+                      <li key={j} className="flex items-start gap-2 text-xs text-[#A1A1AA]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 flex-shrink-0" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex gap-3 pt-1">
+                  {p.github ? (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-cyan-500/30 text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all">
+                      <ExternalLink size={13} /> View on GitHub
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/[0.07] text-[#52525B] text-xs font-medium cursor-default select-none">
+                      <ExternalLink size={13} /> Private / Coming Soon
+                    </span>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── Mobile: horizontal snap carousel ── */}
+        <div className="lg:hidden">
+          <div
+            ref={projectScrollRef}
+            className="project-scroll flex gap-4 overflow-x-auto px-6"
+            style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+          >
             {projects.map((p, i) => (
-              <motion.div key={p.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
-                className="glass rounded-2xl overflow-hidden border border-white/[0.07] hover:border-white/[0.14] transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+              <motion.div
+                key={p.title}
+                className="project-card glass rounded-2xl overflow-hidden border border-white/[0.07] flex-shrink-0"
+                style={{ scrollSnapAlign: "start", width: "85vw" }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
                 {/* Gradient header */}
-                <div className={`relative h-36 bg-gradient-to-br ${p.gradient} p-6 flex items-end overflow-hidden`}>
+                <div className={`relative h-36 bg-gradient-to-br ${p.gradient} p-5 flex items-end overflow-hidden`}>
                   <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3),transparent_60%)]" />
-                  <div className="absolute top-4 right-4 w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                  <div className="absolute top-4 right-4 w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
                     {catIcon(p.category)}
                   </div>
                   <div className="relative z-10">
                     <span className="text-white/70 text-xs font-medium uppercase tracking-wider">{p.category} Project</span>
-                    <h3 className="text-white font-bold text-lg leading-tight mt-0.5">{p.title}</h3>
+                    <h3 className="text-white font-bold text-base leading-tight mt-0.5">{p.title}</h3>
                   </div>
                 </div>
                 {/* Content */}
-                <div className="p-6 space-y-5">
-                  <p className="text-[#A1A1AA] text-sm leading-relaxed">{p.description}</p>
+                <div className="p-5 space-y-4">
+                  <p className="text-[#A1A1AA] text-sm leading-relaxed line-clamp-3">{p.description}</p>
                   {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {p.technologies.map(t => (
-                      <span key={t} className="px-2.5 py-1 text-xs rounded-lg bg-white/[0.05] border border-white/[0.07] text-[#A1A1AA] hover:text-cyan-400 hover:border-cyan-500/20 transition-colors">{t}</span>
+                      <span key={t} className="px-2.5 py-1 text-xs rounded-lg bg-white/[0.05] border border-white/[0.07] text-[#A1A1AA]">{t}</span>
                     ))}
                   </div>
-                  {/* Details */}
+                  {/* Key features */}
                   <div>
-                    <h4 className="text-[#FAFAFA] font-semibold text-sm mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {p.details.map((d, j) => (
+                    <h4 className="text-[#FAFAFA] font-semibold text-sm mb-2">Key Features:</h4>
+                    <ul className="space-y-1.5">
+                      {p.details.slice(0, 4).map((d, j) => (
                         <li key={j} className="flex items-start gap-2 text-xs text-[#A1A1AA]">
                           <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 flex-shrink-0" />
                           {d}
@@ -574,21 +674,46 @@ export default function App() {
                       ))}
                     </ul>
                   </div>
-                  {/* Buttons */}
+                  {/* Button */}
                   <div className="flex gap-3 pt-1">
-                    <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/[0.1] text-[#A1A1AA] text-xs font-medium hover:text-white hover:border-white/[0.2] hover:bg-white/[0.05] transition-all">
-                      <ExternalLink size={13} /> View Project
-                    </button>
+                    {p.github ? (
+                      <a href={p.github} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-cyan-500/30 text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all">
+                        <ExternalLink size={13} /> View on GitHub
+                      </a>
+                    ) : (
+                      <span className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/[0.07] text-[#52525B] text-xs font-medium cursor-default select-none">
+                        <ExternalLink size={13} /> Private / Coming Soon
+                      </span>
+                    )}
                   </div>
                 </div>
               </motion.div>
+            ))}
+            {/* Trailing spacer so last card doesn't hug right edge */}
+            <div className="flex-shrink-0 w-2" aria-hidden="true" />
+          </div>
+
+          {/* ── Dot indicators ── */}
+          <div className="flex justify-center items-center gap-2 mt-5 px-6">
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToProjectCard(idx)}
+                aria-label={`Go to project ${idx + 1}`}
+                className={`transition-all duration-300 rounded-full ${
+                  activeProjectIdx === idx
+                    ? "bg-cyan-400 w-6 h-2"
+                    : "bg-white/20 hover:bg-white/40 w-2 h-2"
+                }`}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" className="py-28 px-6 relative z-10">
+      <section id="contact" className="py-16 lg:py-28 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionHeader badge="Get In Touch" title="Let's Work" highlight="Together" sub="Have a project in mind? I'd love to hear about it" />
           <div className="grid lg:grid-cols-2 gap-10 items-start">
