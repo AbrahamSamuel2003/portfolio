@@ -96,6 +96,14 @@ body {
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 10px 24px -4px rgba(44, 52, 128, 0.05);
 }
 
+/* ── GPU STABILIZATION & ZERO FLICKER FOR ALL CARDS ── */
+.card-stable {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* ── GLASS NAV (frosted alabaster / white) ── */
 .glass-nav {
   background: rgba(255, 255, 255, 0.85);

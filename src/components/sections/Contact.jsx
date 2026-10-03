@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Send, Check, Building2, Linkedin, Github, Instagram, MessageCircle, ArrowUpRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 
-export default function Contact() {
+const Contact = memo(function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSent, setIsSent] = useState(false);
 
@@ -36,10 +36,10 @@ export default function Contact() {
           
           {/* Left: Contact Channels & Credentials (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-4 sm:space-y-6 text-center lg:text-left"
           >
             <div className="grid grid-cols-2 sm:grid-cols-1 gap-2.5 sm:gap-3">
@@ -82,7 +82,7 @@ export default function Contact() {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-all group cursor-pointer"
+                  className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-[border-color,background-color] duration-200 group cursor-pointer card-stable"
                 >
                   <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
                     <c.icon className={c.color} size={17} />
@@ -162,10 +162,10 @@ export default function Contact() {
                       <input
                         type="text"
                         required
-                        placeholder="John Doe"
+                        placeholder="Enter the name..."
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-[border-color,background-color,box-shadow] duration-200"
                       />
                     </div>
                     <div>
@@ -173,10 +173,10 @@ export default function Contact() {
                       <input
                         type="email"
                         required
-                        placeholder="john@enterprise.com"
+                        placeholder="Enter the email address..."
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-[border-color,background-color,box-shadow] duration-200"
                       />
                     </div>
                   </div>
@@ -186,10 +186,10 @@ export default function Contact() {
                     <textarea
                       required
                       rows={4}
-                      placeholder="Tell me about your project, system architecture, or inquiry..."
+                      placeholder="Enter the message or inquiry..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-base sm:text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#4452E6] focus:bg-white focus:ring-2 focus:ring-[#4452E6]/10 transition-[border-color,background-color,box-shadow] duration-200 resize-none"
                     />
                   </div>
 
@@ -212,4 +212,6 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+});
+
+export default Contact;

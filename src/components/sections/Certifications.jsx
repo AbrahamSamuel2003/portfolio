@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 import { certificationsData } from "../../data/portfolioData.js";
 
-export default function Certifications() {
+const Certifications = memo(function Certifications() {
   const [showAll, setShowAll] = useState(false);
   const visibleCerts = showAll ? certificationsData : certificationsData.slice(0, 6);
 
@@ -30,9 +30,9 @@ export default function Certifications() {
                 key={c.name}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: (idx % 3) * 0.08 }}
-                className="p-3 sm:p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/30 hover:shadow-md transition-all flex flex-col justify-between space-y-3 group"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.35, delay: (idx % 3) * 0.06 }}
+                className="p-3 sm:p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/30 hover:shadow-md transition-[border-color,box-shadow] duration-200 flex flex-col justify-between space-y-3 group card-stable"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between gap-1">
@@ -111,4 +111,6 @@ export default function Certifications() {
       </div>
     </section>
   );
-}
+});
+
+export default Certifications;

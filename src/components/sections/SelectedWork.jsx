@@ -1,8 +1,9 @@
+import { memo } from "react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 import ProjectCarousel from "../ui/ProjectCarousel.jsx";
 import { allProjects } from "../../data/portfolioData.js";
 
-export default function SelectedWork() {
+const SelectedWork = memo(function SelectedWork() {
   return (
     <section id="projects" className="py-10 sm:py-14 px-6 relative z-10">
       <div className="max-w-6xl mx-auto space-y-8 text-center">
@@ -21,4 +22,6 @@ export default function SelectedWork() {
       </div>
     </section>
   );
-}
+});
+
+export default SelectedWork;

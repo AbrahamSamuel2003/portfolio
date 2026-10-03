@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 import { skillsData } from "../../data/portfolioData.js";
 
-export default function Skills() {
+const Skills = memo(function Skills() {
   return (
     <section id="skills" className="py-10 sm:py-14 px-6 relative z-10">
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
@@ -24,11 +25,11 @@ export default function Skills() {
             return (
               <motion.div
                 key={category}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-all duration-300 group"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-[border-color,box-shadow] duration-200 group card-stable"
               >
                 <div className="grid lg:grid-cols-12 gap-6 items-start">
                   
@@ -79,4 +80,6 @@ export default function Skills() {
       </div>
     </section>
   );
-}
+});
+
+export default Skills;

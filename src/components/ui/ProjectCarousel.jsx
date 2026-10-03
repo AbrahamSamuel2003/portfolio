@@ -144,7 +144,7 @@ export default function ProjectCarousel({ projects }) {
           <div
             key={project.id}
             onClick={() => setSelectedProject(project)}
-            className="w-[300px] sm:w-[340px] max-w-[350px] flex-shrink-0 flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-all duration-200 snap-start text-left group cursor-pointer"
+            className="w-[300px] sm:w-[340px] max-w-[350px] flex-shrink-0 flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-[border-color,box-shadow] duration-200 snap-start text-left group cursor-pointer card-stable"
           >
             <div className="space-y-3">
               {/* Category & Highlight */}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, useScroll } from "framer-motion";
 
 // Modular Component Architecture
@@ -26,33 +26,43 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const { scrollYProgress } = useScroll();
 
-  // Active section spy on scroll
+  // Active section spy on scroll (Throttled with requestAnimationFrame to prevent re-render flicker)
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const current = SECTION_IDS.find((id) => {
-        const el = document.getElementById(id);
-        if (!el) return false;
-        const rect = el.getBoundingClientRect();
-        return rect.top <= 180 && rect.bottom >= 180;
-      });
-      if (current) setActiveSection(current);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const current = SECTION_IDS.find((id) => {
+            const el = document.getElementById(id);
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return rect.top <= 200 && rect.bottom >= 100;
+          });
+          if (current) {
+            setActiveSection((prev) => (prev !== current ? current : prev));
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavigate = (id) => {
+  const handleNavigate = useCallback((id) => {
     const target = document.getElementById(id);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
       setActiveSection(id);
     }
-  };
+  }, []);
 
-  const handleToTop = () => {
+  const handleToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative overflow-x-hidden selection:bg-[#4452E6]/15 selection:text-[#2C3480]">

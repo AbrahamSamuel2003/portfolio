@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, Calendar, CheckCircle2, ChevronDown } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 import { experienceData, educationData } from "../../data/portfolioData.js";
 
-export default function Experience() {
+const Experience = memo(function Experience() {
   // State to track which cards are expanded (keyed by company+role)
   // By default, cards are collapsed so they normally show the role, company, period, and status badge.
   const [expandedCards, setExpandedCards] = useState({});
@@ -37,11 +37,11 @@ export default function Experience() {
             return (
               <motion.div
                 key={cardKey}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`relative rounded-2xl transition-all duration-300 ${
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
+                className={`relative rounded-2xl transition-[border-color,box-shadow] duration-200 card-stable ${
                   isPrimary
                     ? "bg-white border-2 border-[#4452E6] shadow-lg shadow-[#4452E6]/8"
                     : "bg-white border border-[#E2E8F0] shadow-sm hover:border-[#CBD5E1]"
@@ -171,4 +171,6 @@ export default function Experience() {
       </div>
     </section>
   );
-}
+});
+
+export default Experience;
