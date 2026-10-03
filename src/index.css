@@ -2,27 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── CUSTOM PROPERTIES ── */
+/* ── CUSTOM PROPERTIES (The Ultimate Light Mode System) ── */
 :root {
-  --bg: #09090B;
-  --surface: #111114;
-  --surface-2: #18181B;
-  --border: rgba(255, 255, 255, 0.08);
-  --text: #FAFAFA;
-  --muted: #A1A1AA;
-  --accent: #22D3EE;
-  --accent-glow: rgba(34, 211, 238, 0.12);
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
+  --text: #0F172A;
+  --muted: #64748B;
+  --accent: #2C3480;
+  --interactive: #4452E6;
+  --interactive-subtle: #EEF0FD;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px -2px rgba(44, 52, 128, 0.06);
+  --shadow-lg: 0 12px 32px -4px rgba(44, 52, 128, 0.08);
 }
 
-/* ── BASE ── */
+/* ── BASE & ANTI-FLICKER ── */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -36,7 +43,7 @@ body {
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -44,47 +51,73 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: #CBD5E1;
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #94A3B8;
+}
+
+/* ── MODAL SCROLLBAR ── */
+.modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+.modal-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 12px 0;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
 
 /* ── SELECTION ── */
 ::selection {
-  background: rgba(34, 211, 238, 0.18);
-  color: #22D3EE;
+  background: rgba(68, 82, 230, 0.15);
+  color: #2C3480;
 }
 
-/* ── GLASS CARD (static — no backdrop-filter to save GPU compositing) ── */
+/* ── SURFACE CARDS & ELEVATIONS ── */
 .glass {
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 10px 24px -4px rgba(44, 52, 128, 0.05);
 }
 
-/* ── GLASS NAV (fixed navbar only — needs blur to see through page) ── */
+/* ── GLASS NAV (frosted alabaster / white) ── */
 .glass-nav {
-  background: rgba(9, 9, 11, 0.80);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(44, 52, 128, 0.07);
 }
 
 /* ── GRADIENT TEXT ── */
 .gradient-text {
-  background: linear-gradient(135deg, #22D3EE 0%, #67E8F9 100%);
+  background: linear-gradient(135deg, #2C3480 0%, #4452E6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── GRID BG ── */
+/* ── LIGHT GRID BG ── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
 }
 
@@ -106,31 +139,20 @@ body {
   will-change: transform;
 }
 
-@keyframes pulse-dot {
 
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: scale(0.85);
-  }
-}
-
-.pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-/* ── PROJECT CAROUSEL (mobile) ── */
+/* ── HIDE SCROLLBAR UTILITY ── */
+.no-scrollbar,
 .project-scroll {
-  -ms-overflow-style: none;   /* IE / Edge */
-  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge */
+  scrollbar-width: none !important;    /* Firefox */
 }
+
+.no-scrollbar::-webkit-scrollbar,
 .project-scroll::-webkit-scrollbar {
-  display: none;               /* Chrome / Safari / Opera */
+  display: none !important;            /* Chrome / Safari / Opera */
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 /* ── REDUCED MOTION ── */
