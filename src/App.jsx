@@ -26,36 +26,39 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const { scrollYProgress } = useScroll();
 
-  // Active section spy on scroll (Throttled with requestAnimationFrame to prevent re-render flicker)
+  // High-performance asynchronous IntersectionObserver (Zero main-thread layout thrashing)
   useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const current = SECTION_IDS.find((id) => {
-            const el = document.getElementById(id);
-            if (!el) return false;
-            const rect = el.getBoundingClientRect();
-            return rect.top <= 200 && rect.bottom >= 100;
-          });
-          if (current) {
-            setActiveSection((prev) => (prev !== current ? current : prev));
-          }
-          ticking = false;
-        });
-        ticking = true;
+    const observerCallback = (entries) => {
+      const visibleEntries = entries.filter((e) => e.isIntersecting);
+      if (visibleEntries.length > 0) {
+        // Pick the most prominent visible section
+        const primary = visibleEntries.sort(
+          (a, b) => b.intersectionRatio - a.intersectionRatio
+        )[0];
+        if (primary && primary.target.id) {
+          setActiveSection((prev) => (prev !== primary.target.id ? primary.target.id : prev));
+        }
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: [0, 0.25, 0.5, 0.75]
+    });
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const handleNavigate = useCallback((id) => {
     const target = document.getElementById(id);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveSection(id);
     }
   }, []);
@@ -67,8 +70,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative overflow-x-hidden selection:bg-[#4452E6]/15 selection:text-[#2C3480]">
 
-      {/* GLOBAL LIGHT MODE AMBIENT LIGHTING & SUBTLE ARCHITECTURAL GRID (GPU isolated to prevent scroll flicker) */}
-      <div className="fixed inset-0 pointer-events-none z-0" style={{ transform: "translateZ(0)", willChange: "transform" }}>
+      {/* GLOBAL LIGHT MODE AMBIENT LIGHTING & SUBTLE ARCHITECTURAL GRID (Hardware Accelerated) */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+        style={{ transform: "translate3d(0,0,0)", willChange: "transform", contain: "paint" }}
+      >
         {/* Azure Ethereal Top-Left Glow */}
         <div className="absolute -top-32 left-1/4 w-[850px] h-[850px] bg-[#4452E6]/[0.045] rounded-full blur-[120px] transform-gpu" />
         {/* Cobalt Ambient Right Glow */}

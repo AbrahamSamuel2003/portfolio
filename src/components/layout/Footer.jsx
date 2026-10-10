@@ -110,7 +110,7 @@ export default function Footer({ onToTop, onNavigate }) {
                     rel="noopener noreferrer"
                     aria-label={item.name}
                     title={item.name}
-                    className={`w-9 h-9 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-center text-[#64748B] transition-all cursor-pointer shadow-2xs ${item.color} hover:bg-white hover:scale-105`}
+                    className={`w-9 h-9 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex items-center justify-center text-[#64748B] transition-[color,border-color,background-color] duration-200 cursor-pointer shadow-2xs ${item.color} hover:bg-white`}
                   >
                     <Icon size={16} />
                   </a>
@@ -131,8 +131,9 @@ export default function Footer({ onToTop, onNavigate }) {
             onClick={onToTop}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
             aria-label="Scroll back to top"
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] text-xs font-semibold text-[#2C3480] hover:text-[#4452E6] hover:border-[#4452E6]/30 hover:bg-[#EEF0FD] transition-all cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] text-xs font-semibold text-[#2C3480] hover:text-[#4452E6] hover:border-[#4452E6]/30 hover:bg-[#EEF0FD] transition-[background-color,border-color,color] duration-200 cursor-pointer shadow-2xs"
           >
             <span>Back to top</span>
             <ArrowUp size={13} />

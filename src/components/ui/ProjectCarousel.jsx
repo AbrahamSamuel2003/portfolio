@@ -40,7 +40,7 @@ export default function ProjectCarousel({ projects }) {
     };
   }, [filteredProjects]);
 
-  // Lock background scroll and listen for Escape key when modal is open
+  // Lock background scroll without horizontal layout shift and listen for Escape key
   useEffect(() => {
     if (!selectedProject) return;
 
@@ -48,11 +48,19 @@ export default function ProjectCarousel({ projects }) {
       if (e.key === "Escape") setSelectedProject(null);
     };
 
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const originalOverflow = document.body.style.overflow;
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.paddingRight = originalPaddingRight;
+      document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedProject]);
@@ -94,7 +102,7 @@ export default function ProjectCarousel({ projects }) {
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-[background-color,color,border-color,box-shadow] duration-200 cursor-pointer ${
                   activeCategory === cat
                     ? "bg-[#2C3480] text-white shadow-xs"
                     : "bg-white text-[#64748B] border border-[#E2E8F0] hover:text-[#0F172A] hover:bg-[#F8FAFC]"
@@ -119,7 +127,7 @@ export default function ProjectCarousel({ projects }) {
               onClick={() => handleScroll("left")}
               disabled={!canScrollLeft}
               aria-label="Scroll left"
-              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-all flex items-center justify-center cursor-pointer shadow-xs"
+              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs"
             >
               <ChevronLeft size={16} />
             </button>
@@ -127,7 +135,7 @@ export default function ProjectCarousel({ projects }) {
               onClick={() => handleScroll("right")}
               disabled={!canScrollRight}
               aria-label="Scroll right"
-              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-all flex items-center justify-center cursor-pointer shadow-xs"
+              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs"
             >
               <ChevronRight size={16} />
             </button>
@@ -198,7 +206,7 @@ export default function ProjectCarousel({ projects }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2C3480] text-white text-xs font-semibold hover:bg-[#4452E6] transition-all shadow-xs cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2C3480] text-white text-xs font-semibold hover:bg-[#4452E6] transition-colors duration-200 shadow-xs cursor-pointer"
                   >
                     <span>Open Live</span>
                     <ExternalLink size={12} />
@@ -211,7 +219,7 @@ export default function ProjectCarousel({ projects }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2E8F0] bg-white text-[#0F172A] text-xs font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all shadow-2xs cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2E8F0] bg-white text-[#0F172A] text-xs font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-colors duration-200 shadow-2xs cursor-pointer"
                   >
                     <Code2 size={13} />
                     <span>Code</span>
@@ -241,17 +249,18 @@ export default function ProjectCarousel({ projects }) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
                   className="fixed inset-0 bg-[#0F172A]/50 backdrop-blur-sm pointer-events-none"
                 />
 
                 {/* Modal Dialog Surface (Stops propagation so clicking inside does not dismiss) */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                  initial={{ opacity: 0, scale: 0.96, y: 12 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 16 }}
-                  transition={{ type: "spring", duration: 0.35, bounce: 0.1 }}
+                  exit={{ opacity: 0, scale: 0.96, y: 12 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative z-10 w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden text-left cursor-default"
+                  className="relative z-10 w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden text-left cursor-default card-stable"
                 >
                   {/* Pinned Top Header: Category, Title, Action CTAs (Visit Live Application at top!) & Close button */}
                   <div className="p-5 sm:p-7 pb-4 sm:pb-5 border-b border-[#E2E8F0] bg-white flex flex-col gap-4 flex-shrink-0">
@@ -283,7 +292,7 @@ export default function ProjectCarousel({ projects }) {
                             href={selectedProject.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2C3480] text-white text-xs sm:text-sm font-semibold hover:bg-[#4452E6] transition-all shadow-xs cursor-pointer active:scale-98"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2C3480] text-white text-xs sm:text-sm font-semibold hover:bg-[#4452E6] transition-colors duration-200 shadow-xs cursor-pointer active:scale-98"
                           >
                             <span>Visit Live Application</span>
                             <ExternalLink size={14} />
@@ -295,7 +304,7 @@ export default function ProjectCarousel({ projects }) {
                             href={selectedProject.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-xs sm:text-sm font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all shadow-2xs cursor-pointer"
+                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-xs sm:text-sm font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-colors duration-200 shadow-2xs cursor-pointer"
                           >
                             <Code2 size={15} />
                             <span>View Code</span>

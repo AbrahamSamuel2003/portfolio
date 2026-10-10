@@ -104,7 +104,7 @@ const Contact = memo(function Contact() {
                   href="https://www.linkedin.com/in/abraham-samuel-developer/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#4452E6] hover:border-[#4452E6]/30 transition-all cursor-pointer shadow-2xs"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#4452E6] hover:border-[#4452E6]/30 transition-[color,border-color] duration-200 cursor-pointer shadow-2xs"
                 >
                   <Linkedin size={13} className="text-[#0A66C2]" />
                   <span>LinkedIn</span>
@@ -113,7 +113,7 @@ const Contact = memo(function Contact() {
                   href="https://www.instagram.com/abr_samuell/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#E4405F] hover:border-[#E4405F]/30 transition-all cursor-pointer shadow-2xs"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#E4405F] hover:border-[#E4405F]/30 transition-[color,border-color] duration-200 cursor-pointer shadow-2xs"
                 >
                   <Instagram size={13} className="text-[#E4405F]" />
                   <span>Instagram</span>
@@ -122,7 +122,7 @@ const Contact = memo(function Contact() {
                   href="https://github.com/AbrahamSamuel2003"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#4452E6] hover:border-[#4452E6]/30 transition-all cursor-pointer shadow-2xs"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A] hover:text-[#4452E6] hover:border-[#4452E6]/30 transition-[color,border-color] duration-200 cursor-pointer shadow-2xs"
                 >
                   <Github size={13} />
                   <span>GitHub</span>
@@ -197,7 +197,8 @@ const Contact = memo(function Contact() {
                     type="submit"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-3.5 rounded-xl bg-[#2C3480] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#4452E6] transition-all shadow-lg shadow-[#2C3480]/20 flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className="w-full py-3.5 rounded-xl bg-[#2C3480] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#4452E6] transition-[background-color,box-shadow] duration-200 shadow-lg shadow-[#2C3480]/20 flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
                   >
                     <Send size={14} />
                     <span>Transmit Message</span>

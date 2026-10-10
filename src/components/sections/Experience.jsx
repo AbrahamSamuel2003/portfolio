@@ -108,8 +108,8 @@ const Experience = memo(function Experience() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.32, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden will-change-[height,opacity]"
                     >
                       <div className="px-5 sm:px-7 pb-6 sm:pb-7 pt-2 border-t border-[#E2E8F0] space-y-4">
                         {/* Role Description */}

@@ -97,7 +97,8 @@ export default function Navbar({ activeSection, onNavigate }) {
               download
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2C3480] text-white text-xs font-semibold hover:bg-[#4452E6] transition-all shadow-sm shadow-[#2C3480]/20 cursor-pointer"
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2C3480] text-white text-xs font-semibold hover:bg-[#4452E6] transition-[background-color,box-shadow] duration-200 shadow-sm shadow-[#2C3480]/20 cursor-pointer"
             >
               <Download size={13} />
               <span>Resume</span>
@@ -132,7 +133,7 @@ export default function Navbar({ activeSection, onNavigate }) {
         <a
           href="/Abraham_Samuel_T.pdf"
           download
-          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#2C3480] text-white text-[11px] font-semibold hover:bg-[#4452E6] transition-all shadow-xs cursor-pointer active:scale-95"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#2C3480] text-white text-[11px] font-semibold hover:bg-[#4452E6] transition-colors shadow-xs cursor-pointer active:scale-95"
         >
           <Download size={12} />
           <span>Resume</span>
@@ -153,8 +154,9 @@ export default function Navbar({ activeSection, onNavigate }) {
               <motion.button
                 key={item.id}
                 whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 onClick={() => onNavigate(item.id)}
-                className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all duration-200 cursor-pointer ${
+                className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-[background-color,color] duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#EEF0FD] text-[#2C3480]"
                     : "text-[#64748B] hover:text-[#0F172A]"

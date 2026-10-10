@@ -72,7 +72,7 @@ const Certifications = memo(function Certifications() {
                           href={encodeURI(c.fileUrl)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-lg border border-[#E2E8F0] bg-white text-[#2C3480] text-[10px] sm:text-[11px] font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all cursor-pointer"
+                          className="inline-flex items-center justify-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-lg border border-[#E2E8F0] bg-white text-[#2C3480] text-[10px] sm:text-[11px] font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-[background-color,border-color] duration-200 cursor-pointer"
                           title="View Certificate in browser"
                         >
                           <span>View</span>
@@ -81,7 +81,7 @@ const Certifications = memo(function Certifications() {
                         <a
                           href={encodeURI(c.fileUrl)}
                           download={c.fileName || "Certificate.pdf"}
-                          className="inline-flex items-center justify-center gap-1 px-1.5 sm:px-2.5 py-1.5 rounded-lg bg-[#2C3480] text-white text-[10px] sm:text-[11px] font-semibold hover:bg-[#4452E6] transition-all shadow-xs cursor-pointer"
+                          className="inline-flex items-center justify-center gap-1 px-1.5 sm:px-2.5 py-1.5 rounded-lg bg-[#2C3480] text-white text-[10px] sm:text-[11px] font-semibold hover:bg-[#4452E6] transition-colors duration-200 shadow-xs cursor-pointer"
                           title="Download Certificate PDF"
                         >
                           <Download size={10} />
@@ -101,7 +101,7 @@ const Certifications = memo(function Certifications() {
           <div className="text-center pt-2">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="px-6 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-xs font-semibold text-[#2C3480] hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all cursor-pointer shadow-xs"
+              className="px-6 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-xs font-semibold text-[#2C3480] hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-[background-color,border-color] duration-200 cursor-pointer shadow-xs"
             >
               {showAll ? "Show Less" : `View All ${certificationsData.length} Credentials`}
             </button>
