@@ -30,8 +30,8 @@ const Certifications = memo(function Certifications() {
                 key={c.name}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.35, delay: (idx % 3) * 0.06 }}
+                viewport={{ once: true, amount: 0.05, margin: "0px 0px -30px 0px" }}
+                transition={{ duration: 0.4, delay: (idx % 3) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="p-3 sm:p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/30 hover:shadow-md transition-[border-color,box-shadow] duration-200 flex flex-col justify-between space-y-3 group card-stable"
               >
                 <div className="space-y-2.5">

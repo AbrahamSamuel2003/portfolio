@@ -2,7 +2,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronLeft, ChevronRight, ExternalLink, Code2, Lock,
+  ChevronLeft, ChevronRight, ExternalLink, Code2,
   Bot, Layers, Monitor, Zap, CheckCircle2, X
 } from "lucide-react";
 

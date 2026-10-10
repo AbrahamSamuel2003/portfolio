@@ -1,10 +1,9 @@
 import {
-  Code2, GraduationCap, Briefcase, Globe, Terminal,
-  Zap, Cpu, Database, Layout, Rocket,
-  Target, Heart, Users, Lightbulb, Shield, Cloud, BarChart3,
-  Monitor, Lock, Bot, Layers, FileText, Server, Building2,
-  Workflow, ArrowRight, MessageSquare, Mail, Phone, CheckCircle2,
-  Palette, FileSpreadsheet, Award
+  Code2, Briefcase, Globe, Terminal,
+  Zap, Cpu, Database, Layout,
+  Users, Shield, BarChart3,
+  Bot, Layers, Server,
+  Palette, FileSpreadsheet
 } from "lucide-react";
 
 /* ─── TECHNICAL ARSENAL DATA ─── */
@@ -35,94 +34,6 @@ export const skillsData = {
     skills: ["AES-256-GCM Encryption", "Better-Auth / Passkeys", "Role-Based Access Control (RBAC)", "Git / GitHub Version Control", "Vite Bundler", "Linux VPS / Nginx", "Pino Logging"]
   }
 };
-
-/* ─── FLAGSHIP PRODUCTION SYSTEMS (SS40 NETWORK) ─── */
-export const productionSystems = [
-  {
-    id: "mailai",
-    number: "01",
-    title: "MailAI — AI Email → WhatsApp Reply System",
-    badge: "Production System",
-    role: "Full Stack Developer",
-    company: "SS40 NETWORK PRIVATE LIMITED",
-    tagline: "Bridging corporate email inboxes directly to executive WhatsApp channels with AI-powered triage and strict RFC 2822 thread preservation.",
-    description: "An intelligent executive communication pipeline connecting email inboxes directly to WhatsApp. Features real-time priority email filtering with Google Gemini & Groq, interactive WhatsApp draft previews, natural language reply synthesis, and RFC 2822 header-compliant email dispatch that strictly preserves conversation threads.",
-    category: "Full Stack / AI System",
-    accent: "cyan",
-    gradient: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    liveUrl: "https://mailai.ss40network.cloud/",
-    githubUrl: null,
-    metrics: [
-      { label: "AI Response Triage", value: "< 2.5s" },
-      { label: "RFC 2822 Compliance", value: "100%" },
-      { label: "Token Security", value: "AES-256-GCM" }
-    ],
-    technologies: ["Fastify", "TypeScript", "Prisma ORM", "Google Gemini API", "Groq LLM", "WhatsApp Cloud API", "Baileys", "Gmail OAuth2", "IMAP/SMTP", "BullMQ", "Redis", "Razorpay", "PDFKit"],
-    architectureHighlights: [
-      "AI Email Ingestion Pipeline: Classifies incoming emails by urgency, sentiment, and action items using Gemini & Groq while suppressing marketing spam.",
-      "Bidirectional WhatsApp Channel: Delivers instant executive alerts and turns brief natural-language WhatsApp replies into polished professional email drafts.",
-      "Strict RFC 2822 Thread Preservation: Injects In-Reply-To, References, and external Thread-ID headers so replies land cleanly inside existing client email threads.",
-      "Enterprise Security: AES-256-GCM credential encryption for OAuth & IMAP passwords with session state machine tracking.",
-      "Billing & Queues: Automated Razorpay GST checkout, instant PDFKit GST invoice generation, Zoho Mail delivery, and BullMQ background job queues."
-    ]
-  },
-  {
-    id: "gtc",
-    number: "02",
-    title: "Global Talent Connect (GTC)",
-    badge: "Enterprise SaaS Platform",
-    role: "Full Stack Developer",
-    company: "SS40 NETWORK PRIVATE LIMITED",
-    tagline: "Autonomous talent intelligence infrastructure connecting verified technical talent, global enterprise employers, and accredited academies.",
-    description: "A comprehensive employment intelligence platform connecting pre-evaluated technical candidates, enterprise employers, and accredited training institutions through an autonomous deterministic matching and proctoring loop.",
-    category: "Enterprise SaaS",
-    accent: "violet",
-    gradient: "from-violet-500/20 via-indigo-500/10 to-transparent",
-    liveUrl: "https://gtc.ss40network.cloud/",
-    githubUrl: null,
-    metrics: [
-      { label: "Matching Vectors", value: "100-Point" },
-      { label: "Assessment MCQs", value: "20 Proctored" },
-      { label: "Multi-Tenant Roles", value: "5 RBAC Levels" }
-    ],
-    technologies: ["TanStack Start", "React 19", "TypeScript", "Drizzle ORM", "SQLite", "Better-Auth", "Groq LLM", "Radix UI", "Tailwind CSS"],
-    architectureHighlights: [
-      "Deterministic 100-Point Matching Engine: Multi-factor scoring evaluating candidate skill proficiency weights (40%), proctored exam score (35%), availability (15%), and proximity (10%).",
-      "Candidate Resume → Vacancy Desk Workflow: Automated resume upload (.pdf, .docx, .txt), base64 blob persistence, Groq LLM skill extraction, and in-place streaming viewer for hiring managers.",
-      "6-Stage Recruitment Pipeline: Complete hiring lifecycle on Vacancy Desk (Applied → Screened → Shortlisted → Interview → Offer → Placed) with anti-malpractice gating.",
-      "AI Proctored Technical Assessments: Dynamically generated 20-MCQ skill exams with browser focus tracking and tier-based verified scoring (Expert, Proficient, Standard).",
-      "Enterprise RBAC & Passkeys: Multi-tenant role segregation for Candidate, Employer, Partner, and Admin with WebAuthn/Passkey authentication support."
-    ]
-  },
-  {
-    id: "ss40",
-    number: "03",
-    title: "SS40 Network Enterprise Portal & CMS",
-    badge: "Enterprise Web Platform",
-    role: "Full Stack Developer",
-    company: "SS40 NETWORK PRIVATE LIMITED",
-    tagline: "Unified digital headquarters and high-scale CMS for SS40 Network's Digital Solutions, SaaS Products, and Tech Academics.",
-    description: "The primary digital platform and custom Content Management System for SS40 NETWORK PRIVATE LIMITED, presenting three core business wings: Digital Solutions, SaaS Products, and Tech Academics.",
-    category: "Enterprise Web Platform",
-    accent: "emerald",
-    gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    liveUrl: "https://ss40network.com/",
-    githubUrl: null,
-    metrics: [
-      { label: "Core Business Wings", value: "3 Divisions" },
-      { label: "Render Mode", value: "Edge-Optimized" },
-      { label: "CMS Telemetry", value: "Full Audit Logs" }
-    ],
-    technologies: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "Framer Motion", "Lenis Scroll", "Nodemailer", "Sharp"],
-    architectureHighlights: [
-      "Full-Stack Enterprise Architecture: Built on Next.js App Router and React 19 with PostgreSQL database persistence and Prisma ORM.",
-      "Custom Admin Content Management: Complete administrative control over digital products, client case studies, student capstones, video happimonials, and organization logos.",
-      "Lead Ingestion CRM & Alerts: Direct contact and demo booking pipelines with real-time Nodemailer dispatch and visitor session telemetry.",
-      "High-Performance Visual Design: Edge-optimized caching, Lenis smooth scrolling, interactive impact mockups, spotlight cards, and Sharp image optimization.",
-      "SEO & Structured Schema: Automated JSON-LD metadata for organization, local business, and sitelink hierarchies."
-    ]
-  }
-];
 
 /* ─── ALL SELECTED WORK / PROJECT ARCHIVE ─── */
 export const allProjects = [
