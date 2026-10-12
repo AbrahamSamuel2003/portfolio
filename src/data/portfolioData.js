@@ -265,23 +265,23 @@ export const educationData = [
 export const engineeringPrinciples = [
   {
     icon: Server,
-    title: "Production Reliability & Type Safety",
-    description: "Building systems with strict TypeScript validation, resilient error boundaries, and defensive backend handling to guarantee 99.9% uptime."
+    title: "Production Reliability & Scale",
+    description: "Strict TypeScript validation and defensive architecture ensuring resilient 99.9% uptime."
   },
   {
     icon: Shield,
     title: "Security & Standards Compliance",
-    description: "Enforcing AES-256-GCM token encryption, session-based RBAC authentication, and strict adherence to RFC email standards."
+    description: "AES-256-GCM token encryption, session RBAC, and strict RFC email compliance."
   },
   {
     icon: Zap,
-    title: "Low Latency & Scalability",
-    description: "Designing database indexes, edge caching strategies, and Redis background queues (BullMQ) to maintain sub-second response times."
+    title: "Low Latency & Speed",
+    description: "Optimized database indexing, edge caching, and Redis BullMQ background queues."
   },
   {
     icon: Bot,
     title: "Purpose-Driven AI Engineering",
-    description: "Leveraging Google Gemini and Groq LLMs not as gimmicks, but to automate high-friction operational workflows like email triage and talent screening."
+    description: "Production Gemini & Groq pipelines automating complex triage and screening workflows."
   }
 ];
 

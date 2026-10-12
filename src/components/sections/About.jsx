@@ -30,20 +30,17 @@ const About = memo(function About() {
             <p>
               I am a <strong className="text-[#0F172A]">Full Stack Developer</strong> at{" "}
               <span className="text-[#4452E6] font-semibold">SS40 NETWORK PRIVATE LIMITED</span>{" "}
-              with a Master of Computer Applications (MCA) degree. My work centers on transforming complex operational requirements into resilient, automated, and secure digital software.
+              specializing in resilient web applications, event-driven backend APIs, and production AI automation.
             </p>
             <p>
-              Rather than writing generic code, I focus on building high-utility software — whether architecting AI triage pipelines for corporate email threads, building deterministic candidate scoring engines, or designing full-stack enterprise portals.
-            </p>
-            <p>
-              I value clear communication, strict adherence to technical standards (such as RFC mail compliance and token encryption), and writing code that is clean, observable, and easy for teams to maintain.
+              I focus on building high-utility software—from RFC-compliant email engines and AES-256 encrypted authentication to deterministic candidate evaluation algorithms.
             </p>
 
             {/* Quick Credentials Block */}
-            <div className="p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm space-y-1.5 text-xs text-center lg:text-left mx-auto lg:mx-0 max-w-md lg:max-w-none card-stable">
-              <div className="text-[#2C3480] font-bold uppercase tracking-wider font-mono">Academic Foundation</div>
+            <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm space-y-1 text-xs text-center lg:text-left mx-auto lg:mx-0 max-w-md lg:max-w-none card-stable">
+              <div className="text-[#2C3480] font-bold uppercase tracking-wider font-mono text-[11px]">Academic Foundation</div>
               <p className="text-[#0F172A] font-semibold">Master of Computer Applications (MCA) — Graduated with Distinction</p>
-              <p className="text-[#64748B]">Manonmanium Sundaranar University (2024 – 2026)</p>
+              <p className="text-[#64748B] text-[11px]">Manonmanium Sundaranar University (2024 – 2026)</p>
             </div>
           </motion.div>
 
