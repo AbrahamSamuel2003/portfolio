@@ -12,6 +12,13 @@ export default function ProjectCarousel({ projects }) {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [scrollPercent, setScrollPercent] = useState(0);
+
+  // Mouse drag-to-scroll states
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startScrollLeft, setStartScrollLeft] = useState(0);
+  const [hasDragged, setHasDragged] = useState(false);
 
   const categories = ["All", "Full Stack & SaaS", "AI / Automation", "Applications", "Plugins & WordPress"];
 
@@ -23,8 +30,10 @@ export default function ProjectCarousel({ projects }) {
   const checkScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 4);
+    const maxScroll = scrollWidth - clientWidth;
+    setScrollPercent(maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0);
   };
 
   useEffect(() => {
@@ -38,6 +47,31 @@ export default function ProjectCarousel({ projects }) {
       if (current) current.removeEventListener("scroll", checkScroll);
       window.removeEventListener("resize", checkScroll);
     };
+  }, [filteredProjects]);
+
+  // Seamless horizontal scroll on mouse wheel
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // Native trackpad horizontal scroll
+      if (e.shiftKey) return; // Shift + Wheel native
+
+      if (Math.abs(e.deltaY) > 0) {
+        const canScroll =
+          (e.deltaY > 0 && el.scrollLeft < el.scrollWidth - el.clientWidth - 4) ||
+          (e.deltaY < 0 && el.scrollLeft > 4);
+
+        if (canScroll) {
+          e.preventDefault();
+          el.scrollBy({ left: e.deltaY * 1.25, behavior: "auto" });
+        }
+      }
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
   }, [filteredProjects]);
 
   // Lock background scroll without horizontal layout shift and listen for Escape key
@@ -65,9 +99,37 @@ export default function ProjectCarousel({ projects }) {
     };
   }, [selectedProject]);
 
+  // Mouse Drag-to-Scroll Handlers
+  const handleMouseDown = (e) => {
+    if (e.button !== 0 || !scrollRef.current) return;
+    setIsDragging(true);
+    setHasDragged(false);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setStartScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.4;
+    if (Math.abs(walk) > 5) {
+      setHasDragged(true);
+    }
+    scrollRef.current.scrollLeft = startScrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
   const handleScroll = (direction) => {
     if (!scrollRef.current) return;
-    const scrollAmount = scrollRef.current.clientWidth * 0.75;
+    const scrollAmount = Math.max(340, scrollRef.current.clientWidth * 0.75);
     scrollRef.current.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth"
@@ -89,7 +151,7 @@ export default function ProjectCarousel({ projects }) {
   };
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-5">
       {/* Category Filter Pills & Directional Navigation */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Category Pills */}
@@ -117,8 +179,8 @@ export default function ProjectCarousel({ projects }) {
           })}
         </div>
 
-        {/* Scroll Controls */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        {/* Scroll Controls (Left & Right Full Traversal) */}
+        <div className="flex items-center gap-2.5 flex-shrink-0">
           <span className="text-xs font-mono text-[#64748B]">
             {filteredProjects.length} {filteredProjects.length === 1 ? "Project" : "Projects"}
           </span>
@@ -126,32 +188,48 @@ export default function ProjectCarousel({ projects }) {
             <button
               onClick={() => handleScroll("left")}
               disabled={!canScrollLeft}
-              aria-label="Scroll left"
-              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs"
+              aria-label="Scroll left fully"
+              title="Scroll left"
+              className="w-9 h-9 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs active:scale-95"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => handleScroll("right")}
               disabled={!canScrollRight}
-              aria-label="Scroll right"
-              className="w-8 h-8 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs"
+              aria-label="Scroll right fully"
+              title="Scroll right"
+              className="w-9 h-9 rounded-xl border border-[#E2E8F0] bg-white text-[#2C3480] hover:text-[#4452E6] hover:bg-[#EEF0FD] hover:border-[#4452E6]/30 disabled:opacity-35 disabled:pointer-events-none transition-[background-color,border-color,color] duration-200 flex items-center justify-center cursor-pointer shadow-xs active:scale-95"
             >
-              <ChevronRight size={16} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Horizontal Scrollable Track */}
+      {/* Horizontal Scrollable Track with Full Left/Right Drag, Wheel & Touch Support */}
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto pb-4 pt-1 px-1 scroll-smooth snap-x snap-mandatory select-none project-scroll no-scrollbar"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        className={`flex gap-5 overflow-x-auto pb-4 pt-1 px-1 select-none project-scroll no-scrollbar ${
+          isDragging ? "cursor-grabbing scroll-auto" : "cursor-grab scroll-smooth"
+        }`}
+        style={{
+          WebkitOverflowScrolling: "touch",
+          overscrollBehaviorX: "contain"
+        }}
       >
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            onClick={() => setSelectedProject(project)}
+            onClick={() => {
+              if (!hasDragged) {
+                setSelectedProject(project);
+              }
+            }}
             className="w-[300px] sm:w-[340px] max-w-[350px] flex-shrink-0 flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-[border-color,box-shadow] duration-200 snap-start text-left group cursor-pointer card-stable"
           >
             <div className="space-y-3">
@@ -233,6 +311,24 @@ export default function ProjectCarousel({ projects }) {
             </div>
           </div>
         ))}
+
+        {/* End Clearance Spacer so the final card is 100% visible and never clipped */}
+        <div className="w-8 sm:w-14 flex-shrink-0" aria-hidden="true" />
+      </div>
+
+      {/* Horizontal Scroll Progress Track & Directional Hint */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1 px-1">
+        <span className="text-[11px] font-mono text-[#64748B] flex items-center gap-1.5">
+          <span>← Drag, swipe, or use arrows to scroll all {filteredProjects.length} projects →</span>
+        </span>
+
+        {/* Dynamic Progress Indicator Bar */}
+        <div className="w-36 sm:w-48 h-1.5 bg-[#E2E8F0] rounded-full overflow-hidden flex-shrink-0">
+          <div
+            className="h-full bg-gradient-to-r from-[#2C3480] to-[#4452E6] rounded-full transition-all duration-150"
+            style={{ width: `${Math.max(16, scrollPercent)}%` }}
+          />
+        </div>
       </div>
 
       {/* Project Explanation Overlay Modal (Mounted via React Portal to document.body) */}
