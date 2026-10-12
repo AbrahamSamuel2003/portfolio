@@ -1,7 +1,70 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import { Briefcase, Layers, GraduationCap, Code2, CheckCircle2 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
-import { engineeringPrinciples } from "../../data/portfolioData.js";
+
+const ABOUT_CARDS = [
+  {
+    icon: Briefcase,
+    category: "Current Role",
+    badge: "Active Role",
+    title: "Full Stack Developer",
+    subtitle: "SS40 NETWORK PRIVATE LIMITED",
+    period: "Aug 2026 – Present",
+    highlights: [
+      "Architecting production SaaS platforms, Fastify REST APIs, and Next.js 16 web applications.",
+      "Developing bidirectional AI automation systems with Google Gemini, Groq LLMs, and WhatsApp Cloud APIs.",
+      "Enforcing strict RFC 2822 compliance, AES-256-GCM token encryption, and session-based RBAC security."
+    ],
+    accent: "#4452E6",
+    bgAccent: "#EEF0FD"
+  },
+  {
+    icon: Layers,
+    category: "Projects Snapshot",
+    badge: "10+ Systems",
+    title: "Featured Production Systems",
+    subtitle: "Enterprise Platforms & Web Apps",
+    period: "2024 – Present",
+    highlights: [
+      "MailAI: Executive AI triage pipeline delivering priority email alerts directly to WhatsApp.",
+      "Ruthra Medicines: Bilingual Siddha & Ayurveda e-commerce with automated PDF billing and courier dispatch.",
+      "Global Talent Connect & SS40 Portal: 100-point candidate screening and high-throughput corporate CMS."
+    ],
+    accent: "#2C3480",
+    bgAccent: "#EEF0FD"
+  },
+  {
+    icon: GraduationCap,
+    category: "Education",
+    badge: "MCA Distinction",
+    title: "Master of Computer Applications",
+    subtitle: "Manonmanium Sundaranar University",
+    period: "2024 – 2026",
+    highlights: [
+      "Graduated with Distinction in advanced distributed software architectures and database design.",
+      "B.Sc in Computer Science: St. John's College (2021 – 2024) — Graduated with Grade A Distinction.",
+      "Strong theoretical and applied foundation in algorithms, system security, and cloud architectures."
+    ],
+    accent: "#0D9488",
+    bgAccent: "#F0FDFA"
+  },
+  {
+    icon: Code2,
+    category: "Internships",
+    badge: "Industry Trained",
+    title: "Professional Internships",
+    subtitle: "Smackcoders & Dhatchan Academy",
+    period: "Nov 2024 – June 2025",
+    highlights: [
+      "Smackcoders (WordPress Developer Intern): Engineered custom PHP plugins, batch CSV/XML data importers, and MySQL optimizations.",
+      "Dhatchan Academy (Web Development Intern): Designed responsive, accessible UI components adhering to production standards.",
+      "Gained hands-on experience in cross-functional team sprints, code reviews, and enterprise client requirements."
+    ],
+    accent: "#D97706",
+    bgAccent: "#FFFBEB"
+  }
+];
 
 const About = memo(function About() {
   return (
@@ -10,68 +73,101 @@ const About = memo(function About() {
         
         {/* Section Heading */}
         <SectionHeading
-          badge="About"
-          title="About"
-          highlight="Me"
-          subtitle="My background, work at SS40 Network, and software engineering approach."
+          badge="About Me"
+          title="Executive"
+          highlight="Profile"
+          subtitle="A high-level summary of my professional role, production projects, academic credentials, and internships."
         />
 
-        {/* Narrative & Principles Layout */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start text-center lg:text-left">
-          
-          {/* Left Narrative (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-5 space-y-5 sm:space-y-6 text-[#334155] text-sm sm:text-base leading-relaxed text-center lg:text-left"
-          >
-            <p>
-              I am a <strong className="text-[#0F172A]">Full Stack Developer</strong> at{" "}
-              <span className="text-[#4452E6] font-semibold">SS40 NETWORK PRIVATE LIMITED</span>{" "}
-              specializing in resilient web applications, event-driven backend APIs, and production AI automation.
+        {/* Executive Bio Lead-in Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.45 }}
+          className="p-5 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-5 card-stable"
+        >
+          <div className="space-y-1.5 max-w-3xl">
+            <h3 className="text-base sm:text-lg font-bold text-[#2C3480] tracking-tight">
+              Abraham Samuel T — Full Stack Software Engineer
+            </h3>
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+              Based at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>, I specialize in engineering high-throughput web portals, event-driven backend services, and purposeful AI pipelines. I focus on building reliable, secure, and production-tested software that solves real business friction.
             </p>
-            <p>
-              I focus on building high-utility software—from RFC-compliant email engines and AES-256 encrypted authentication to deterministic candidate evaluation algorithms.
-            </p>
-
-            {/* Quick Credentials Block */}
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm space-y-1 text-xs text-center lg:text-left mx-auto lg:mx-0 max-w-md lg:max-w-none card-stable">
-              <div className="text-[#2C3480] font-bold uppercase tracking-wider font-mono text-[11px]">Academic Foundation</div>
-              <p className="text-[#0F172A] font-semibold">Master of Computer Applications (MCA) — Graduated with Distinction</p>
-              <p className="text-[#64748B] text-[11px]">Manonmanium Sundaranar University (2024 – 2026)</p>
-            </div>
-          </motion.div>
-
-          {/* Right Engineering Principles Cards (7 cols) - Anti-flicker GPU stabilized */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-2.5 sm:gap-4">
-            {engineeringPrinciples.map((principle, idx) => {
-              const Icon = principle.icon;
-
-              return (
-                <motion.div
-                  key={principle.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.4, delay: idx * 0.06 }}
-                  className="p-3.5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/30 hover:shadow-md transition-[border-color,box-shadow] duration-200 space-y-2 sm:space-y-3 flex flex-col items-center sm:items-start text-center sm:text-left card-stable"
-                >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#EEF0FD] border border-[#4452E6]/25 flex items-center justify-center text-[#4452E6] flex-shrink-0">
-                    <Icon size={16} className="sm:w-[18px] sm:h-[18px]" />
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#2C3480] tracking-tight leading-snug">
-                    {principle.title}
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-[#64748B] leading-relaxed line-clamp-3 sm:line-clamp-none">
-                    {principle.description}
-                  </p>
-                </motion.div>
-              );
-            })}
           </div>
 
+          <div className="flex flex-wrap sm:flex-col items-center sm:items-end justify-center gap-2 flex-shrink-0 text-xs font-mono">
+            <span className="px-3 py-1 rounded-full bg-[#EEF0FD] text-[#2C3480] font-semibold border border-[#4452E6]/20">
+              MCA Distinction
+            </span>
+            <span className="px-3 py-1 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
+              Full Stack @ SS40
+            </span>
+          </div>
+        </motion.div>
+
+        {/* 4-Card Modular Executive Snapshot Grid (Projects, Education, Internships, Current Role) */}
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+          {ABOUT_CARDS.map((card, idx) => {
+            const Icon = card.icon;
+
+            return (
+              <motion.div
+                key={card.category}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
+                className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/35 hover:shadow-md transition-[border-color,box-shadow] duration-200 flex flex-col justify-between space-y-4 group card-stable text-left"
+              >
+                {/* Card Top: Category, Icon & Status Badge */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <div
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"
+                        style={{ backgroundColor: card.bgAccent, color: card.accent }}
+                      >
+                        <Icon size={18} />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] block font-semibold">
+                          {card.category}
+                        </span>
+                        <h4 className="text-sm sm:text-base font-bold text-[#2C3480] leading-tight group-hover:text-[#4452E6] transition-colors">
+                          {card.title}
+                        </h4>
+                      </div>
+                    </div>
+
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] flex-shrink-0">
+                      {card.badge}
+                    </span>
+                  </div>
+
+                  {/* Organization & Period */}
+                  <div className="flex items-center justify-between gap-2 text-xs pt-0.5 border-b border-[#E2E8F0] pb-2.5">
+                    <span className="font-semibold text-[#0F172A] truncate">
+                      {card.subtitle}
+                    </span>
+                    <span className="text-[#64748B] font-mono text-[11px] flex-shrink-0">
+                      {card.period}
+                    </span>
+                  </div>
+
+                  {/* Highlights Bullet Matrix */}
+                  <div className="space-y-2 pt-1">
+                    {card.highlights.map((highlight, hIdx) => (
+                      <div key={hIdx} className="flex items-start gap-2 text-xs text-[#475569] leading-relaxed">
+                        <CheckCircle2 size={14} className="text-[#4452E6] mt-0.5 flex-shrink-0" />
+                        <span>{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
