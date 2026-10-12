@@ -88,8 +88,12 @@ const About = memo(function About() {
           className="p-5 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-5 card-stable"
         >
           <div className="space-y-1.5 max-w-3xl">
-            <h3 className="text-base sm:text-lg font-bold text-[#2C3480] tracking-tight">
-              Abraham Samuel T — Full Stack Software Engineer
+            <h3 className="text-base sm:text-lg font-bold text-[#2C3480] tracking-tight flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-0.5 sm:gap-2">
+              <span className="text-[#0F172A] sm:text-[#2C3480]">Abraham Samuel T</span>
+              <span className="hidden sm:inline text-[#94A3B8] font-normal">—</span>
+              <span className="text-[#4452E6] sm:text-[#2C3480] font-semibold text-xs sm:text-lg">
+                Full Stack Software Engineer
+              </span>
             </h3>
             <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               Based at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>, I specialize in engineering high-throughput web portals, event-driven backend services, and purposeful AI pipelines. I focus on building reliable, secure, and production-tested software that solves real business friction.
