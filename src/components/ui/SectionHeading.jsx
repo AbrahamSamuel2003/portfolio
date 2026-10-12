@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 export default function SectionHeading({ badge, title, highlight, subtitle, align = "center" }) {

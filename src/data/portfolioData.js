@@ -56,6 +56,25 @@ export const allProjects = [
     accent: "cyan"
   },
   {
+    id: "ruthra-medicines",
+    title: "Ruthra Medicines — Healthcare E-Commerce",
+    category: "Full Stack & SaaS",
+    shortDesc: "Bilingual Siddha & Ayurveda e-commerce platform with automated invoicing, order telemetry, and courier dispatch.",
+    overview: "Ruthra Medicines is a full-stack e-commerce system built for authentic traditional healthcare formulations, featuring bilingual localization (Tamil & English), customer checkout, and a master admin operations desk.",
+    problemSolved: "Traditional medicine manufacturers often struggle with manual phone orders, lack of regional Tamil language accessibility, and disconnected billing. Ruthra Medicines provides a modern digital storefront with automated GST PDF invoices, real-time courier dispatch tracking, and inventory control.",
+    keyFeatures: [
+      "Bilingual storefront (English & Tamil) with specialized formulation taxonomy for Siddha, Ayurveda, and proprietary medicines.",
+      "Automated client PDF invoicing and multi-item archive packaging upon order confirmation.",
+      "Comprehensive master admin dashboard for catalog CRUD, stock tracking, and courier delivery management.",
+      "Type-safe PostgreSQL relational data modeling via Prisma ORM with jose/bcrypt authentication."
+    ],
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Prisma ORM", "PostgreSQL", "Tailwind CSS", "jsPDF", "Nodemailer"],
+    live: "https://ruthramedicines.com/",
+    github: null,
+    highlight: "SS40 Production System",
+    accent: "emerald"
+  },
+  {
     id: "gtc",
     title: "Global Talent Connect (GTC)",
     category: "Full Stack & SaaS",
@@ -72,6 +91,25 @@ export const allProjects = [
     github: null,
     highlight: "SS40 Production System",
     accent: "violet"
+  },
+  {
+    id: "addithalam-foundation",
+    title: "Addithalam Foundation — NGO Digital Platform",
+    category: "Applications",
+    shortDesc: "Official bilingual digital platform for a registered public charitable trust empowering underprivileged youth and women in IT.",
+    overview: "A high-performance bilingual web platform designed for Addithalam Foundation, a registered public charitable trust in Chennai providing free, industry-grade software engineering education, mentorship, and career placement preparation.",
+    problemSolved: "Charitable trusts require a credible, accessible, and transparent digital presence to connect with sponsors, recruit rural/underprivileged students across linguistic barriers, and highlight verified student placement metrics.",
+    keyFeatures: [
+      "Full bilingual architecture (English & Tamil) with Noto Sans Tamil typography and instant state-managed language switching.",
+      "Interactive curriculum directory covering IT training tracks, mentorship, and career placement preparation.",
+      "Impact showcases and trust governance reporting featuring verified student milestones and donation channels.",
+      "Fluid micro-animations with Framer Motion and optimized mobile navigation built for high accessibility."
+    ],
+    technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Turbopack", "Lucide React"],
+    live: "https://addithalam-website.vercel.app/",
+    github: null,
+    highlight: "Charitable Trust Platform",
+    accent: "amber"
   },
   {
     id: "ss40",

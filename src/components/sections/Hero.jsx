@@ -130,7 +130,7 @@ export default function Hero({ onNavigate }) {
           {/* Core Technical Highlights Bar (No dots) */}
           <div className="pt-3 border-t border-[#E2E8F0] grid grid-cols-3 sm:flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-8 text-xs text-[#64748B] w-full">
             <div className="p-2 sm:p-0 rounded-xl bg-white sm:bg-transparent border sm:border-0 border-[#E2E8F0] shadow-2xs sm:shadow-none flex flex-col sm:flex-row items-center gap-0.5 sm:gap-1.5 text-center sm:text-left">
-              <strong className="text-[#0F172A] font-semibold text-xs">9+</strong>
+              <strong className="text-[#0F172A] font-semibold text-xs">10+</strong>
               <span className="text-[10px] sm:text-xs">Projects</span>
             </div>
             <div className="p-2 sm:p-0 rounded-xl bg-white sm:bg-transparent border sm:border-0 border-[#E2E8F0] shadow-2xs sm:shadow-none flex flex-col sm:flex-row items-center gap-0.5 sm:gap-1.5 text-center sm:text-left">
