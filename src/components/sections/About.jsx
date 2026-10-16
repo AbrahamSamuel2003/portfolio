@@ -2,19 +2,20 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Layers, GraduationCap, Code2, CheckCircle2 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
+import AboutCube3D from "../ui/AboutCube3D.jsx";
 
 const ABOUT_CARDS = [
   {
     icon: Briefcase,
     category: "Current Role",
-    badge: "Active Role",
     title: "Full Stack Developer",
     subtitle: "SS40 NETWORK PRIVATE LIMITED",
     period: "Aug 2026 – Present",
     highlights: [
       "Architecting production SaaS platforms, Fastify REST APIs, and Next.js 16 web applications.",
       "Developing bidirectional AI automation systems with Google Gemini, Groq LLMs, and WhatsApp Cloud APIs.",
-      "Enforcing strict RFC 2822 compliance, AES-256-GCM token encryption, and session-based RBAC security."
+      "Enforcing strict RFC 2822 compliance, AES-256-GCM token encryption, and session-based RBAC security.",
+      "Mentoring interns, reviewing code quality, and helping them build and launch live software features."
     ],
     accent: "#4452E6",
     bgAccent: "#EEF0FD"
@@ -22,14 +23,14 @@ const ABOUT_CARDS = [
   {
     icon: Layers,
     category: "Projects Snapshot",
-    badge: "10+ Systems",
     title: "Featured Production Systems",
     subtitle: "Enterprise Platforms & Web Apps",
     period: "2024 – Present",
     highlights: [
       "MailAI: Executive AI triage pipeline delivering priority email alerts directly to WhatsApp.",
       "Ruthra Medicines: Bilingual Siddha & Ayurveda e-commerce with automated PDF billing and courier dispatch.",
-      "Global Talent Connect & SS40 Portal: 100-point candidate screening and high-throughput corporate CMS."
+      "Global Talent Connect & SS40 Portal: 100-point candidate screening and high-throughput corporate CMS.",
+      "Engineered complete web applications with real-time alerts, secure checkout, and easy-to-use dashboards."
     ],
     accent: "#2C3480",
     bgAccent: "#EEF0FD"
@@ -37,7 +38,6 @@ const ABOUT_CARDS = [
   {
     icon: GraduationCap,
     category: "Education",
-    badge: "MCA Distinction",
     title: "Master of Computer Applications",
     subtitle: "Manonmanium Sundaranar University",
     period: "2024 – 2026",
@@ -52,7 +52,6 @@ const ABOUT_CARDS = [
   {
     icon: Code2,
     category: "Internships",
-    badge: "Industry Trained",
     title: "Professional Internships",
     subtitle: "Smackcoders & Dhatchan Academy",
     period: "Nov 2024 – June 2025",
@@ -68,7 +67,7 @@ const ABOUT_CARDS = [
 
 const About = memo(function About() {
   return (
-    <section id="about" className="py-10 sm:py-14 px-6 relative z-10">
+    <section id="about" className="py-10 sm:py-14 px-4 sm:px-6 relative z-10">
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
         
         {/* Section Heading */}
@@ -110,8 +109,13 @@ const About = memo(function About() {
           </div>
         </motion.div>
 
-        {/* 4-Card Modular Executive Snapshot Grid (Projects, Education, Internships, Current Role) */}
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+        {/* ── MOBILE VIEW: 3D ROTATING CUBE (< md) ── */}
+        <div className="block md:hidden w-full">
+          <AboutCube3D cards={ABOUT_CARDS} />
+        </div>
+
+        {/* ── DESKTOP VIEW: 2x2 EXECUTIVE GRID (≥ md) ── */}
+        <div className="hidden md:grid md:grid-cols-2 gap-4 sm:gap-6">
           {ABOUT_CARDS.map((card, idx) => {
             const Icon = card.icon;
 
@@ -143,10 +147,6 @@ const About = memo(function About() {
                         </h4>
                       </div>
                     </div>
-
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#F8FAFC] border border-[#E2E8F0] text-[#475569] flex-shrink-0">
-                      {card.badge}
-                    </span>
                   </div>
 
                   {/* Organization & Period */}
@@ -177,6 +177,7 @@ const About = memo(function About() {
       </div>
     </section>
   );
+  
 });
 
 export default About;
