@@ -39,11 +39,11 @@ const ABOUT_CARDS = [
     icon: GraduationCap,
     category: "Education",
     title: "Master of Computer Applications",
-    subtitle: "Manonmanium Sundaranar University",
+    subtitle: "Manonmanium Sundaranar University, Tirunelveli",
     period: "2024 – 2026",
     highlights: [
       "Graduated with Distinction in advanced distributed software architectures and database design.",
-      "B.Sc in Computer Science: St. John's College (2021 – 2024) — Graduated with Grade A Distinction.",
+      "B.Sc in Computer Science: St. John's College, Palayamkottai, Tirunelveli (2021 – 2024) — Graduated with Grade A Distinction.",
       "Strong theoretical and applied foundation in algorithms, system security, and cloud architectures."
     ],
     accent: "#0D9488",
@@ -95,7 +95,7 @@ const About = memo(function About() {
               </span>
             </h3>
             <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-              Based at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>, I specialize in engineering high-throughput web portals, event-driven backend services, and purposeful AI pipelines. I focus on building reliable, secure, and production-tested software that solves real business friction.
+              Based in <strong className="text-[#0F172A] font-semibold">Tirunelveli, Tamil Nadu</strong> and engineering at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>, I specialize in building high-throughput web portals, event-driven backend services, and purposeful AI pipelines. I focus on building reliable, secure, and production-tested software that solves real business friction for regional and global clients.
             </p>
           </div>
 
@@ -105,6 +105,9 @@ const About = memo(function About() {
             </span>
             <span className="px-3 py-1 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
               Full Stack @ SS40
+            </span>
+            <span className="px-3 py-1 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
+              Tirunelveli, TN
             </span>
           </div>
         </motion.div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Mail, Download } from "lucide-react";
+import { ChevronRight, Mail, Download, MapPin } from "lucide-react";
 import HeroAvatar from "../ui/HeroAvatar.jsx";
 
 const TARGET_ROLE = "Full Stack Developer";
@@ -61,9 +61,15 @@ export default function Hero({ onNavigate }) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="space-y-3 sm:space-y-5 text-center lg:text-left order-last lg:order-first flex flex-col items-center lg:items-start"
         >
-          {/* Welcome Greeting Badge */}
-          <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] text-[11px] sm:text-xs font-semibold tracking-wide shadow-xs">
-            <span>Welcome to My Portfolio</span>
+          {/* Welcome & Location Badges */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+            <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] text-[11px] sm:text-xs font-semibold tracking-wide shadow-xs">
+              <span>Welcome to My Portfolio</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 text-[11px] sm:text-xs font-medium shadow-xs">
+              <MapPin size={12} className="text-[#4452E6]" />
+              <span>Tirunelveli, India</span>
+            </div>
           </div>
 
           {/* Main Name & Title */}
@@ -85,12 +91,13 @@ export default function Hero({ onNavigate }) {
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Full Stack</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">AI Systems</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Enterprise Web</span>
+              <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white border border-slate-200 text-slate-600 font-medium">Tirunelveli, IN</span>
             </div>
           </div>
 
-          {/* Simplified, Professional Bio */}
+          {/* Simplified, Professional Bio with Local SEO reinforcement */}
           <p className="text-xs sm:text-base text-[#475569] font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Full Stack Developer at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>. I design and build production web applications, scalable backend APIs, and AI automation systems using React, Next.js, Fastify, and modern cloud APIs.
+            Full Stack Developer based in <strong className="text-[#0F172A] font-semibold">Tirunelveli</strong> at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>. I design and build production web applications, scalable backend APIs, and AI automation systems using React, Next.js, Fastify, and modern cloud APIs.
           </p>
 
           {/* Action CTAs */}

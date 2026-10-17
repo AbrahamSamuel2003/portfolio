@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, Check, Building2, Linkedin, Github, Instagram, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, Send, Check, Building2, Linkedin, Github, Instagram, MessageCircle, ArrowUpRight, MapPin } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 
 const Contact = memo(function Contact() {
@@ -28,7 +28,7 @@ const Contact = memo(function Contact() {
           badge="Contact"
           title="Contact"
           highlight="Me"
-          subtitle="Get in touch for engineering roles, technical discussions, or collaborations."
+          subtitle="Get in touch for engineering roles, technical discussions, or collaborations in Tirunelveli and globally."
         />
 
         {/* Main Grid: Channels & Form */}
@@ -75,6 +75,14 @@ const Contact = memo(function Contact() {
                   href: "https://ss40network.com/",
                   color: "text-[#2C3480]",
                   bg: "bg-indigo-50"
+                },
+                {
+                  icon: MapPin,
+                  label: "Location",
+                  val: "Tirunelveli, Tamil Nadu, India",
+                  href: "https://maps.google.com/?q=Tirunelveli,+Tamil+Nadu",
+                  color: "text-rose-600",
+                  bg: "bg-rose-50"
                 },
               ].map((c) => (
                 <a
