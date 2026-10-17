@@ -11,6 +11,7 @@ import Experience from "./components/sections/Experience.jsx";
 import Skills from "./components/sections/Skills.jsx";
 import Certifications from "./components/sections/Certifications.jsx";
 import Contact from "./components/sections/Contact.jsx";
+import BlogsPage from "./components/pages/BlogsPage.jsx";
 
 const SECTION_IDS = [
   "home",
@@ -23,15 +24,36 @@ const SECTION_IDS = [
 ];
 
 export default function App() {
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== "undefined") {
+      const p = window.location.pathname.toLowerCase();
+      const h = window.location.hash.toLowerCase();
+      if (p.includes("blogs") || h.includes("blogs")) return "blogs";
+    }
+    return "home";
+  });
+
   const [activeSection, setActiveSection] = useState("home");
   const { scrollYProgress } = useScroll();
 
-  // High-performance asynchronous IntersectionObserver (Zero main-thread layout thrashing)
+  // Listen to browser Back / Forward buttons
   useEffect(() => {
+    const handlePopState = () => {
+      const p = window.location.pathname.toLowerCase();
+      const h = window.location.hash.toLowerCase();
+      setCurrentView(p.includes("blogs") || h.includes("blogs") ? "blogs" : "home");
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // High-performance asynchronous IntersectionObserver (Only active on home view)
+  useEffect(() => {
+    if (currentView !== "home") return;
+
     const observerCallback = (entries) => {
       const visibleEntries = entries.filter((e) => e.isIntersecting);
       if (visibleEntries.length > 0) {
-        // Pick the most prominent visible section
         const primary = visibleEntries.sort(
           (a, b) => b.intersectionRatio - a.intersectionRatio
         )[0];
@@ -53,19 +75,55 @@ export default function App() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentView]);
 
   const handleNavigate = useCallback((id) => {
+    if (id === "blogs") {
+      setCurrentView("blogs");
+      if (typeof window !== "undefined" && window.location.pathname !== "/blogs") {
+        window.history.pushState({ page: "blogs" }, "", "/blogs");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (currentView === "blogs") {
+      setCurrentView("home");
+      if (typeof window !== "undefined") {
+        window.history.pushState({ page: "home" }, "", "/");
+      }
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          setActiveSection(id);
+        }
+      }, 60);
+      return;
+    }
+
     const target = document.getElementById(id);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveSection(id);
     }
+  }, [currentView]);
+
+  const handleBackToHome = useCallback(() => {
+    setCurrentView("home");
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      window.history.pushState({ page: "home" }, "", "/");
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const handleToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  if (currentView === "blogs") {
+    return <BlogsPage onBackToHome={handleBackToHome} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative overflow-x-hidden selection:bg-[#4452E6]/15 selection:text-[#2C3480]">
@@ -91,7 +149,7 @@ export default function App() {
         style={{ scaleX: scrollYProgress, willChange: "transform" }}
       />
 
-      {/* 1. NAVBAR */}
+      {/* 1. NAVBAR (100% Clean & Untouched) */}
       <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
 
       {/* 2. HERO + 3D ARCHITECTURE VISUAL */}
@@ -115,7 +173,7 @@ export default function App() {
       {/* 8. CONTACT HUB */}
       <Contact />
 
-      {/* 9. FOOTER */}
+      {/* 9. FOOTER (Contains Exclusive Links to Articles & Works) */}
       <Footer onToTop={handleToTop} onNavigate={handleNavigate} />
 
     </div>

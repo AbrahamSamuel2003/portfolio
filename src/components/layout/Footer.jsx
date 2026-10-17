@@ -9,7 +9,8 @@ export default function Footer({ onToTop, onNavigate }) {
     { label: "Experience", id: "experience" },
     { label: "Skills", id: "skills" },
     { label: "Certifications", id: "certifications" },
-    { label: "Contact", id: "contact" }
+    { label: "Contact", id: "contact" },
+    { label: "Articles & Works", id: "blogs" }
   ];
 
   const socialLinks = [
@@ -72,7 +73,7 @@ export default function Footer({ onToTop, onNavigate }) {
               </div>
             </div>
             <p className="text-xs text-[#475569] leading-relaxed max-w-md pt-1 mx-auto md:mx-0">
-              Engineering high-throughput production web applications, event-driven backend services, and AI automation systems.
+              Engineering high-throughput production web applications, event-driven backend services, and AI automation systems. Based in Tirunelveli, Tamil Nadu.
             </p>
           </div>
 
@@ -86,7 +87,9 @@ export default function Footer({ onToTop, onNavigate }) {
                 <button
                   key={item.id}
                   onClick={() => onNavigate && onNavigate(item.id)}
-                  className="text-center md:text-left text-[#64748B] hover:text-[#2C3480] transition-colors cursor-pointer py-1"
+                  className={`text-center md:text-left hover:text-[#2C3480] transition-colors cursor-pointer py-1 ${
+                    item.id === "blogs" ? "text-[#4452E6] font-semibold" : "text-[#64748B]"
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -123,9 +126,16 @@ export default function Footer({ onToTop, onNavigate }) {
 
         {/* Bottom Tier: Copyright & Back-to-Top */}
         <div className="pt-6 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#64748B] font-mono text-center sm:text-left">
-            © 2026 Abraham Samuel T. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-[#64748B] font-mono text-center sm:text-left">
+            <span>© 2026 Abraham Samuel T. All rights reserved.</span>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <button
+              onClick={() => onNavigate && onNavigate("blogs")}
+              className="text-[#2C3480] hover:text-[#4452E6] font-semibold transition-colors cursor-pointer"
+            >
+              Technical Publications &amp; Works
+            </button>
+          </div>
 
           <motion.button
             onClick={onToTop}
