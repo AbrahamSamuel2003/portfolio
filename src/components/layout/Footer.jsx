@@ -10,7 +10,7 @@ export default function Footer({ onToTop, onNavigate }) {
     { label: "Skills", id: "skills" },
     { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" },
-    { label: "Articles & Works", id: "blogs" }
+    { label: "Blogs", id: "blogs" }
   ];
 
   const socialLinks = [
@@ -133,7 +133,7 @@ export default function Footer({ onToTop, onNavigate }) {
               onClick={() => onNavigate && onNavigate("blogs")}
               className="text-[#2C3480] hover:text-[#4452E6] font-semibold transition-colors cursor-pointer"
             >
-              Technical Publications &amp; Works
+              Blogs
             </button>
           </div>
 
