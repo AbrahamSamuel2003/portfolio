@@ -242,6 +242,23 @@ export default memo(function BlogsPage({ onBackToHome }) {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Dynamic SEO Metadata for Googlebot indexing
+    const prevTitle = document.title;
+    document.title = "Engineering Blogs, Architecture Case Studies & Works — Abraham Samuel T";
+
+    const canonical = document.querySelector("link[rel='canonical']");
+    const prevCanonicalHref = canonical ? canonical.getAttribute("href") : "https://abrahamsamuel.vercel.app/";
+    if (canonical) {
+      canonical.setAttribute("href", "https://abrahamsamuel.vercel.app/blogs");
+    }
+
+    return () => {
+      document.title = prevTitle;
+      if (canonical) {
+        canonical.setAttribute("href", prevCanonicalHref);
+      }
+    };
   }, []);
 
   const filteredCaseStudies = activeTab === "all" || activeTab === "projects"
