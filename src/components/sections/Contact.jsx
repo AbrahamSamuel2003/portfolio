@@ -90,7 +90,9 @@ const Contact = memo(function Contact() {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-[border-color,background-color] duration-200 group cursor-pointer card-stable"
+                  className={`flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-[border-color,background-color] duration-200 group cursor-pointer card-stable ${
+                    c.label === "Location" ? "col-span-2 sm:col-span-1 justify-center" : ""
+                  }`}
                 >
                   <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
                     <c.icon className={c.color} size={17} />

@@ -91,8 +91,10 @@ export default function Footer({ onToTop, onNavigate }) {
                 <button
                   key={item.id}
                   onClick={() => onNavigate && onNavigate(item.id)}
-                  className={`text-center md:text-left hover:text-[#2C3480] transition-colors cursor-pointer py-1 ${
-                    item.id === "blogs" ? "text-[#4452E6] font-semibold" : "text-[#64748B]"
+                  className={`hover:text-[#2C3480] transition-colors cursor-pointer py-1 ${
+                    item.id === "blogs"
+                      ? "col-span-2 text-center text-[#4452E6] font-semibold md:col-span-1 md:text-left"
+                      : "text-center md:text-left text-[#64748B]"
                   }`}
                 >
                   {item.label}
