@@ -156,13 +156,13 @@ const Experience = memo(function Experience() {
                 className="p-5 rounded-xl bg-white border border-[#E2E8F0] space-y-2 shadow-sm hover:border-[#CBD5E1] transition-colors text-center sm:text-left flex flex-col items-center sm:items-start"
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className="text-xs font-mono text-[#64748B]">{edu.period}</span>
+                  <span className="text-xs font-mono text-[#334155] font-medium">{edu.period}</span>
                   <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${edu.statusCls}`}>
                     {edu.status}
                   </span>
                 </div>
-                <h4 className="font-bold text-[#0F172A] text-sm leading-snug">{edu.degree}</h4>
-                <p className="text-xs text-[#64748B]">{edu.institution}</p>
+                <h3 className="font-bold text-[#0F172A] text-sm leading-snug">{edu.degree}</h3>
+                <p className="text-xs text-[#475569] font-medium">{edu.institution}</p>
               </motion.div>
             ))}
           </div>

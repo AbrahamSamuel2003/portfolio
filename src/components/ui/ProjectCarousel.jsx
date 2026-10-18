@@ -109,7 +109,7 @@ export default function ProjectCarousel({ projects }) {
                 }`}
               >
                 <span>{cat}</span>
-                <span className={`ml-1.5 text-[10px] ${activeCategory === cat ? "text-blue-200" : "text-[#94A3B8]"}`}>
+                <span className={`ml-1.5 text-[10px] ${activeCategory === cat ? "text-blue-200" : "text-[#475569] font-medium"}`}>
                   ({count})
                 </span>
               </button>
@@ -119,7 +119,7 @@ export default function ProjectCarousel({ projects }) {
 
         {/* Scroll Controls */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <span className="text-xs font-mono text-[#64748B]">
+          <span className="text-xs font-mono text-[#475569] font-medium">
             {filteredProjects.length} {filteredProjects.length === 1 ? "Project" : "Projects"}
           </span>
           <div className="flex items-center gap-1.5">
@@ -163,7 +163,7 @@ export default function ProjectCarousel({ projects }) {
                 </div>
 
                 {project.highlight && (
-                  <span className="text-[10px] font-mono text-[#64748B] uppercase tracking-wider px-2 py-0.5 rounded bg-[#F8FAFC] border border-[#E2E8F0] truncate">
+                  <span className="text-[10px] font-mono text-[#334155] font-medium uppercase tracking-wider px-2 py-0.5 rounded bg-[#F8FAFC] border border-[#E2E8F0] truncate">
                     {project.highlight}
                   </span>
                 )}
@@ -190,7 +190,7 @@ export default function ProjectCarousel({ projects }) {
                   </span>
                 ))}
                 {project.technologies.length > 4 && (
-                  <span className="px-1.5 py-0.5 text-[10px] font-mono text-[#94A3B8]">
+                  <span className="px-1.5 py-0.5 text-[10px] font-mono text-[#334155] font-semibold bg-[#F1F5F9] rounded border border-[#E2E8F0]">
                     +{project.technologies.length - 4}
                   </span>
                 )}
@@ -206,6 +206,7 @@ export default function ProjectCarousel({ projects }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    aria-label={`Open ${project.title} live system`}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2C3480] text-white text-xs font-semibold hover:bg-[#4452E6] transition-colors duration-200 shadow-xs cursor-pointer"
                   >
                     <span>Open Live</span>
@@ -219,6 +220,7 @@ export default function ProjectCarousel({ projects }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    aria-label={`View ${project.title} source code on GitHub`}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2E8F0] bg-white text-[#0F172A] text-xs font-semibold hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-colors duration-200 shadow-2xs cursor-pointer"
                   >
                     <Code2 size={13} />

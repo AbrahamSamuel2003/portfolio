@@ -1,0 +1,29 @@
+# Abraham Samuel T — Best Full Stack Developer in Tirunelveli
+
+> Leading Full Stack Developer & AI Systems Engineer based in Tirunelveli, Tamil Nadu, India. Specializing in high-performance web applications, event-driven backend microservices, and AI integrations.
+
+## Core Capabilities
+- **Frontend Architecture**: React 19, Next.js 16 (App Router), TypeScript, Tailwind CSS, Framer Motion.
+- **Backend & APIs**: Node.js, Fastify, RESTful APIs, BullMQ, Redis caching, IMAP/SMTP mail pipelines.
+- **Databases & ORMs**: PostgreSQL, Prisma ORM, Drizzle ORM, SQLite, MongoDB.
+- **AI Integrations**: Google Gemini AI (2.5 Flash), Groq LLM (Llama-3), Meta WhatsApp Cloud API.
+- **Security & Infrastructure**: AES-256-GCM token encryption, Better-Auth, Role-Based Access Control (RBAC).
+
+## Key Production Works & Systems
+- [MailAI](https://mailai.ss40network.cloud/): Executive AI email triage pipeline delivering priority notifications to WhatsApp.
+- [Ruthra Medicines](https://ruthramedicines.com/): Bilingual Siddha & Ayurveda healthcare e-commerce with automated PDF billing.
+- [Global Talent Connect](https://gtc.ss40network.cloud/): Automated 100-point candidate scoring engine and proctored technical evaluations.
+- [Addithalam Foundation](https://addithalam-website.vercel.app/): Bilingual charitable platform empowering underprivileged youth in software engineering.
+- [SS40 Network Portal](https://ss40network.com/): Corporate enterprise CMS and digital services platform.
+
+## Academic Credentials & Location
+- **Location**: Tirunelveli, Tamil Nadu, 627001, India.
+- **Master of Computer Applications (MCA)**: Graduated with Distinction from Manonmanium Sundaranar University, Tirunelveli (2024–2026).
+- **B.Sc in Computer Science**: Graduated with Grade A Distinction from St. John's College, Palayamkottai, Tirunelveli (2021–2024).
+
+## Essential Links
+- [Main Portfolio](https://abrahamsamuel.vercel.app/)
+- [Engineering Blogs & Case Studies](https://abrahamsamuel.vercel.app/blogs)
+- [LinkedIn Profile](https://www.linkedin.com/in/abraham-samuel-developer/)
+- [GitHub Profile](https://github.com/AbrahamSamuel2003)
+- [WhatsApp Direct Contact](https://wa.me/916383813648)

@@ -152,28 +152,31 @@ export default function App() {
       {/* 1. NAVBAR (100% Clean & Untouched) */}
       <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
 
-      {/* 2. HERO + 3D ARCHITECTURE VISUAL */}
-      <Hero onNavigate={handleNavigate} />
+      {/* Semantic Main Landmark for Accessibility */}
+      <main id="main-content" tabIndex="-1">
+        {/* 2. HERO + 3D ARCHITECTURE VISUAL */}
+        <Hero onNavigate={handleNavigate} />
 
-      {/* 3. ABOUT ME (IMMEDIATELY NEXT TO HERO) */}
-      <About />
+        {/* 3. ABOUT ME (IMMEDIATELY NEXT TO HERO) */}
+        <About />
 
-      {/* 4. FEATURED PROJECTS CAROUSEL */}
-      <SelectedWork />
+        {/* 4. FEATURED PROJECTS CAROUSEL */}
+        <SelectedWork />
 
-      {/* 5. EXPERIENCE & CAREER TIMELINE */}
-      <Experience />
+        {/* 5. EXPERIENCE & CAREER TIMELINE */}
+        <Experience />
 
-      {/* 6. TECHNICAL ARSENAL (SKILLS BLUEPRINT) */}
-      <Skills />
+        {/* 6. TECHNICAL ARSENAL (SKILLS BLUEPRINT) */}
+        <Skills />
 
-      {/* 7. CREDENTIALS & CERTIFICATIONS */}
-      <Certifications />
+        {/* 7. CREDENTIALS & CERTIFICATIONS */}
+        <Certifications />
 
-      {/* 8. CONTACT HUB */}
-      <Contact />
+        {/* 8. CONTACT HUB */}
+        <Contact />
+      </main>
 
-      {/* 9. FOOTER (Contains Exclusive Links to Articles & Works) */}
+      {/* 9. FOOTER (Contains Exclusive Links to Blogs) */}
       <Footer onToTop={handleToTop} onNavigate={handleNavigate} />
 
     </div>

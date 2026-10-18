@@ -43,17 +43,17 @@ const Certifications = memo(function Certifications() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-[#2C3480] text-xs leading-snug group-hover:text-[#4452E6] transition-colors line-clamp-2">
+                    <h3 className="font-bold text-[#2C3480] text-xs leading-snug group-hover:text-[#4452E6] transition-colors line-clamp-2">
                       {c.name}
-                    </h4>
-                    <p className="text-[10px] sm:text-[11px] text-[#64748B] mt-0.5 truncate">
+                    </h3>
+                    <p className="text-[10px] sm:text-[11px] text-[#475569] mt-0.5 truncate">
                       {c.provider}
                     </p>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-1 pt-0.5">
                     {c.tags.slice(0, 2).map((tag) => (
-                      <span key={tag} className="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded bg-[#F8FAFC] text-[#475569] border border-[#E2E8F0] truncate max-w-[85px]">
+                      <span key={tag} className="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded bg-[#F8FAFC] text-[#334155] border border-[#E2E8F0] truncate max-w-[85px] font-medium">
                         {tag}
                       </span>
                     ))}
@@ -62,7 +62,7 @@ const Certifications = memo(function Certifications() {
 
                 {/* Download / View Actions - 2 buttons side-by-side matching screenshot */}
                 <div className="pt-2 sm:pt-3 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-1.5 sm:gap-2">
-                  <span className="text-[9px] font-mono text-[#94A3B8] uppercase tracking-wider hidden sm:inline">
+                  <span className="text-[9px] font-mono text-[#475569] font-medium uppercase tracking-wider hidden sm:inline">
                     PDF
                   </span>
                   <div className="grid grid-cols-2 sm:flex items-center gap-1.5 w-full sm:w-auto">

@@ -142,12 +142,12 @@ const About = memo(function About() {
                         <Icon size={18} />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] block font-semibold">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#475569] block font-semibold">
                           {card.category}
                         </span>
-                        <h4 className="text-sm sm:text-base font-bold text-[#2C3480] leading-tight group-hover:text-[#4452E6] transition-colors">
+                        <h3 className="text-sm sm:text-base font-bold text-[#2C3480] leading-tight group-hover:text-[#4452E6] transition-colors">
                           {card.title}
-                        </h4>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -157,7 +157,7 @@ const About = memo(function About() {
                     <span className="font-semibold text-[#0F172A] truncate">
                       {card.subtitle}
                     </span>
-                    <span className="text-[#64748B] font-mono text-[11px] flex-shrink-0">
+                    <span className="text-[#334155] font-mono text-[11px] font-medium flex-shrink-0">
                       {card.period}
                     </span>
                   </div>
@@ -165,7 +165,7 @@ const About = memo(function About() {
                   {/* Highlights Bullet Matrix */}
                   <div className="space-y-2 pt-1">
                     {card.highlights.map((highlight, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-2 text-xs text-[#475569] leading-relaxed">
+                      <div key={hIdx} className="flex items-start gap-2 text-xs text-[#1E293B] leading-relaxed">
                         <CheckCircle2 size={14} className="text-[#4452E6] mt-0.5 flex-shrink-0" />
                         <span>{highlight}</span>
                       </div>

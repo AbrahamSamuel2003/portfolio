@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/spec/v1/schema.json",
+  "name": "Abraham Samuel T Portfolio",
+  "description": "Portfolio, case studies, and engineering publications of Abraham Samuel T, Full Stack Developer and AI Systems Engineer in Tirunelveli, Tamil Nadu.",
+  "url": "https://abrahamsamuel.vercel.app/",
+  "resources": [
+    {
+      "type": "website",
+      "name": "Portfolio Home",
+      "url": "https://abrahamsamuel.vercel.app/"
+    },
+    {
+      "type": "articles",
+      "name": "Engineering Blogs and Works",
+      "url": "https://abrahamsamuel.vercel.app/blogs"
+    },
+    {
+      "type": "llms-txt",
+      "name": "LLM Summary",
+      "url": "https://abrahamsamuel.vercel.app/llms.txt"
+    }
+  ]
+}

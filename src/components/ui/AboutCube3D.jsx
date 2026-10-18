@@ -133,7 +133,7 @@ const AboutCube3D = memo(function AboutCube3D({ cards }) {
                     <span className="font-semibold text-[#0F172A] text-xs">
                       {card.subtitle}
                     </span>
-                    <span className="text-[#64748B] font-mono text-[10px] flex-shrink-0">
+                    <span className="text-[#334155] font-mono text-[10px] font-medium flex-shrink-0">
                       {card.period}
                     </span>
                   </div>
@@ -154,17 +154,21 @@ const AboutCube3D = memo(function AboutCube3D({ cards }) {
         </motion.div>
       </div>
 
-      {/* CLEAN CENTERED 4-DOT PILL INDICATOR */}
-      <div className="flex items-center justify-center gap-2 mt-6 mb-1">
+      {/* ACCESSIBLE TOUCH-FRIENDLY 4-DOT PILL INDICATOR (Min 32px touch target) */}
+      <div className="flex items-center justify-center gap-1 mt-6 mb-1">
         {cards.map((_, idx) => (
           <button
             key={idx}
             onClick={() => handleSelectFace(idx)}
-            aria-label={`Jump to face ${idx + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === activeFace ? "w-7 bg-[#4452E6]" : "w-2 bg-[#CBD5E1] hover:bg-[#94A3B8]"
-            }`}
-          />
+            aria-label={`Jump to slide ${idx + 1}`}
+            className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center cursor-pointer rounded-full"
+          >
+            <span
+              className={`h-2 rounded-full transition-all duration-300 block ${
+                idx === activeFace ? "w-7 bg-[#4452E6]" : "w-2 bg-[#94A3B8] hover:bg-[#64748B]"
+              }`}
+            />
+          </button>
         ))}
       </div>
 
