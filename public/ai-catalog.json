@@ -1,23 +1,47 @@
 {
-  "$schema": "https://agenticresourcediscovery.org/spec/v1/schema.json",
-  "name": "Abraham Samuel T Portfolio",
-  "description": "Portfolio, case studies, and engineering publications of Abraham Samuel T, Full Stack Developer and AI Systems Engineer in Tirunelveli, Tamil Nadu.",
-  "url": "https://abrahamsamuel.vercel.app/",
-  "resources": [
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Abraham Samuel T Portfolio",
+    "documentationUrl": "https://abrahamsamuel.vercel.app/"
+  },
+  "entries": [
     {
-      "type": "website",
-      "name": "Portfolio Home",
-      "url": "https://abrahamsamuel.vercel.app/"
+      "identifier": "urn:ai:abrahamsamuel.vercel.app:portfolio",
+      "displayName": "Abraham Samuel T - Portfolio & AI Engineering",
+      "type": "text/html",
+      "url": "https://abrahamsamuel.vercel.app/",
+      "description": "Portfolio, full-stack web applications, AI integrations, and case studies by Abraham Samuel T, top Full Stack Developer in Tirunelveli.",
+      "representativeQueries": [
+        "Best full stack developer in Tirunelveli",
+        "React and Next.js developer portfolio Tirunelveli",
+        "Full stack engineer with AI experience in Tamil Nadu"
+      ],
+      "tags": ["full-stack", "react", "nextjs", "tirunelveli", "ai-engineer"]
     },
     {
-      "type": "articles",
-      "name": "Engineering Blogs and Works",
-      "url": "https://abrahamsamuel.vercel.app/blogs"
+      "identifier": "urn:ai:abrahamsamuel.vercel.app:blogs",
+      "displayName": "Engineering Case Studies and Architecture Blogs",
+      "type": "text/html",
+      "url": "https://abrahamsamuel.vercel.app/blogs",
+      "description": "Comprehensive engineering case studies of production systems: MailAI, Ruthra Medicines, GTC, Addithalam Foundation, SS40 Portal.",
+      "representativeQueries": [
+        "MailAI architecture case study",
+        "Full stack production case studies Tirunelveli",
+        "SS40 Network engineering blogs"
+      ],
+      "tags": ["case-studies", "architecture", "microservices", "blogs"]
     },
     {
-      "type": "llms-txt",
-      "name": "LLM Summary",
-      "url": "https://abrahamsamuel.vercel.app/llms.txt"
+      "identifier": "urn:ai:abrahamsamuel.vercel.app:llms-txt",
+      "displayName": "LLM Digest & Machine Context",
+      "type": "text/markdown",
+      "url": "https://abrahamsamuel.vercel.app/llms.txt",
+      "description": "Structured Markdown digest of Abraham Samuel T's technical capabilities, projects, stack, and contact information for AI agents.",
+      "representativeQueries": [
+        "Abraham Samuel T skills summary markdown",
+        "llms.txt for Abraham Samuel portfolio"
+      ],
+      "tags": ["llms-txt", "ai-agent", "context"]
     }
   ]
 }
