@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { motion, useScroll } from "framer-motion";
 
 // Modular Component Architecture
@@ -11,7 +11,8 @@ import Experience from "./components/sections/Experience.jsx";
 import Skills from "./components/sections/Skills.jsx";
 import Certifications from "./components/sections/Certifications.jsx";
 import Contact from "./components/sections/Contact.jsx";
-import BlogsPage from "./components/pages/BlogsPage.jsx";
+
+const BlogsPage = lazy(() => import("./components/pages/BlogsPage.jsx"));
 
 const SECTION_IDS = [
   "home",
@@ -122,7 +123,11 @@ export default function App() {
   }, []);
 
   if (currentView === "blogs") {
-    return <BlogsPage onBackToHome={handleBackToHome} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center text-slate-400 font-mono text-xs">Loading Blogs...</div>}>
+        <BlogsPage onBackToHome={handleBackToHome} />
+      </Suspense>
+    );
   }
 
   return (

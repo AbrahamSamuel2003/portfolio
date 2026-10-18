@@ -7,7 +7,7 @@ const TARGET_ROLE = "Full Stack Developer";
 
 // Isolated memoized typewriter to completely prevent Hero re-renders and layout flicker
 const TypewriterRole = memo(function TypewriterRole() {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(TARGET_ROLE);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const TypewriterRole = memo(function TypewriterRole() {
           setDisplayText(TARGET_ROLE.slice(0, displayText.length + 1));
         }, 75);
       } else {
-        timer = setTimeout(() => setIsDeleting(true), 2400);
+        timer = setTimeout(() => setIsDeleting(true), 3000);
       }
     } else {
       if (displayText.length > 0) {
@@ -45,22 +45,12 @@ export default function Hero({ onNavigate }) {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1fr_1fr] gap-3 sm:gap-8 lg:gap-12 items-center">
         
         {/* Right Animated Avatar Stage (Rendered above fold on mobile, right side on desktop) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative w-full flex items-center justify-center order-first lg:order-last pt-0"
-        >
+        <div className="relative w-full flex items-center justify-center order-first lg:order-last pt-0">
           <HeroAvatar />
-        </motion.div>
+        </div>
 
         {/* Left Editorial Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="space-y-3 sm:space-y-5 text-center lg:text-left order-last lg:order-first flex flex-col items-center lg:items-start"
-        >
+        <div className="space-y-3 sm:space-y-5 text-center lg:text-left order-last lg:order-first flex flex-col items-center lg:items-start">
           {/* Welcome & Location Badges */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
             <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] text-[11px] sm:text-xs font-semibold tracking-wide shadow-xs">
@@ -149,7 +139,7 @@ export default function Hero({ onNavigate }) {
               <span className="text-[10px] sm:text-xs">Architect</span>
             </div>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

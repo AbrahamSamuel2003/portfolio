@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import avatarImg from "../../assets/avatar-animated.jpg";
+import avatarImg from "../../assets/avatar-animated.webp";
 
 const HeroAvatar = memo(function HeroAvatar() {
   const mouseX = useMotionValue(0);
@@ -56,8 +56,12 @@ const HeroAvatar = memo(function HeroAvatar() {
             <img
               src={avatarImg}
               alt="Abraham Samuel T — Full Stack Developer"
-              className="w-full h-full object-cover object-center scale-102 hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="400"
+              className="w-full h-full object-cover object-center"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </div>

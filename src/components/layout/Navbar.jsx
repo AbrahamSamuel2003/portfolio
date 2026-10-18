@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   Download, Home, User, FolderGit2, Briefcase, Mail
 } from "lucide-react";
-import avatarImg from "../../assets/avatar-round.png";
+import avatarImg from "../../assets/avatar-round.webp";
 
 const DESKTOP_NAV_ITEMS = [
   { label: "About", id: "about" },
@@ -58,6 +58,10 @@ export default function Navbar({ activeSection, onNavigate }) {
                 <img
                   src={avatarImg}
                   alt="Abraham Samuel"
+                  width="36"
+                  height="36"
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover object-center"
                 />
               </div>

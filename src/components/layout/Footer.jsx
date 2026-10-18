@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUp, Github, Linkedin, Instagram, MessageCircle, Mail } from "lucide-react";
-import avatarImg from "../../assets/avatar-round.png";
+import avatarImg from "../../assets/avatar-round.webp";
 
 export default function Footer({ onToTop, onNavigate }) {
   const quickLinks = [
@@ -60,6 +60,10 @@ export default function Footer({ onToTop, onNavigate }) {
                 <img
                   src={avatarImg}
                   alt="Abraham Samuel"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
