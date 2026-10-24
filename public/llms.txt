@@ -4,6 +4,7 @@
 
 ## Core Capabilities
 - **Frontend Architecture**: React 19, Next.js 16 (App Router), TypeScript, Tailwind CSS, Framer Motion.
+- **Mobile & Android Development**: Kotlin, Android SDK, XML Layouts, Firebase Auth, Cloud Firestore.
 - **Backend & APIs**: Node.js, Fastify, RESTful APIs, BullMQ, Redis caching, IMAP/SMTP mail pipelines.
 - **Databases & ORMs**: PostgreSQL, Prisma ORM, Drizzle ORM, SQLite, MongoDB.
 - **AI Integrations**: Google Gemini AI (2.5 Flash), Groq LLM (Llama-3), Meta WhatsApp Cloud API.
@@ -12,6 +13,7 @@
 ## Key Production Works & Systems
 - [MailAI](https://mailai.ss40network.cloud/): Executive AI email triage pipeline delivering priority notifications to WhatsApp.
 - [Ruthra Medicines](https://ruthramedicines.com/): Bilingual Siddha & Ayurveda healthcare e-commerce with automated PDF billing.
+- [Zentra Fitness](https://abrahamsamuel.vercel.app/downloads/Zentra.apk): Native Android fitness and calorie tracking application built with Kotlin, Firebase Auth, and Cloud Firestore.
 - [Global Talent Connect](https://gtc.ss40network.cloud/): Automated 100-point candidate scoring engine and proctored technical evaluations.
 - [Addithalam Foundation](https://addithalam-website.vercel.app/): Bilingual charitable platform empowering underprivileged youth in software engineering.
 - [SS40 Network Portal](https://ss40network.com/): Corporate enterprise CMS and digital services platform.

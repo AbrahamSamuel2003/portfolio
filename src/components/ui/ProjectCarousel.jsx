@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft, ChevronRight, ExternalLink, Code2,
-  Bot, Layers, Monitor, Zap, CheckCircle2, X
+  Bot, Layers, Monitor, Zap, CheckCircle2, X, Download, Smartphone
 } from "lucide-react";
 
 export default function ProjectCarousel({ projects }) {
@@ -13,7 +13,7 @@ export default function ProjectCarousel({ projects }) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const categories = ["All", "Full Stack & SaaS", "AI / Automation", "Applications", "Plugins & WordPress"];
+  const categories = ["All", "Full Stack & SaaS", "AI / Automation", "Mobile & Cloud", "Applications", "Plugins & WordPress"];
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return projects;
@@ -85,6 +85,7 @@ export default function ProjectCarousel({ projects }) {
     if (category.includes("AI")) return <Bot size={15} className="text-[#4452E6]" />;
     if (category.includes("SaaS") || category.includes("Full Stack")) return <Layers size={15} className="text-[#2C3480]" />;
     if (category.includes("Plugin")) return <Zap size={15} className="text-indigo-600" />;
+    if (category.includes("Mobile") || category.includes("Android") || category.includes("App")) return <Smartphone size={15} className="text-emerald-600" />;
     return <Monitor size={15} className="text-sky-600" />;
   };
 
@@ -214,6 +215,19 @@ export default function ProjectCarousel({ projects }) {
                   </a>
                 )}
 
+                {project.apk && (
+                  <a
+                    href={project.apk}
+                    download
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label={`Download ${project.title} APK`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors duration-200 shadow-xs cursor-pointer"
+                  >
+                    <Download size={12} />
+                    <span>APK</span>
+                  </a>
+                )}
+
                 {project.github && (
                   <a
                     href={project.github}
@@ -286,8 +300,8 @@ export default function ProjectCarousel({ projects }) {
                       </button>
                     </div>
 
-                    {/* TOP ACTION BAR: Visit Live Application (prominently at top!) */}
-                    {(selectedProject.live || selectedProject.github) && (
+                    {/* TOP ACTION BAR: Visit Live Application / Download APK */}
+                    {(selectedProject.live || selectedProject.github || selectedProject.apk) && (
                       <div className="flex flex-wrap items-center gap-2 pt-1">
                         {selectedProject.live && (
                           <a
@@ -298,6 +312,17 @@ export default function ProjectCarousel({ projects }) {
                           >
                             <span>Visit Live Application</span>
                             <ExternalLink size={14} />
+                          </a>
+                        )}
+
+                        {selectedProject.apk && (
+                          <a
+                            href={selectedProject.apk}
+                            download
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold transition-colors duration-200 shadow-xs cursor-pointer active:scale-98"
+                          >
+                            <Download size={14} />
+                            <span>Download Android APK (20 MB)</span>
                           </a>
                         )}
 
@@ -390,6 +415,16 @@ export default function ProjectCarousel({ projects }) {
                         >
                           <span>Live Demo</span>
                           <ExternalLink size={12} />
+                        </a>
+                      )}
+                      {selectedProject.apk && (
+                        <a
+                          href={selectedProject.apk}
+                          download
+                          className="sm:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition-all"
+                        >
+                          <Download size={12} />
+                          <span>APK</span>
                         </a>
                       )}
                       <button

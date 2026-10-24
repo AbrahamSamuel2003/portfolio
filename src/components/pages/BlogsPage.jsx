@@ -4,7 +4,7 @@ import {
   ArrowLeft, ExternalLink, Github, MessageCircle, Mail,
   CheckCircle2, Code2, Server, Database, Bot, Shield,
   Layers, Terminal, ChevronDown, Sparkles, BookOpen, Clock,
-  MapPin, Award, Building2, Cpu, Globe
+  MapPin, Award, Building2, Cpu, Globe, Download, Smartphone
 } from "lucide-react";
 
 const CASE_STUDIES = [
@@ -67,6 +67,27 @@ const CASE_STUDIES = [
       "Low-latency data modeling utilizing Drizzle ORM and Better-Auth session cryptography."
     ],
     impact: "Shortlisted candidates are qualified with 92% assessment accuracy, cutting initial screening time by 70%."
+  },
+  {
+    id: "zentra-fitness",
+    title: "Zentra Fitness — Android Fitness & Calorie Tracking App",
+    category: "Mobile & Cloud",
+    tagline: "Native Android App Engineered with Kotlin, XML, Firebase Auth & Cloud Firestore",
+    period: "2024",
+    accent: "#10B981",
+    bgAccent: "#ECFDF5",
+    apk: "/downloads/Zentra.apk",
+    technologies: ["Kotlin", "Android SDK", "XML Layouts", "Firebase Authentication", "Cloud Firestore", "NoSQL", "Android Jetpack"],
+    problem: "Fitness enthusiasts struggle with over-complicated, paywalled workout apps and unreliable offline logging. Users require a clean, responsive native Android application for daily calorie tracking, workout logging, and secure real-time cloud data synchronization.",
+    architecture: "Developed natively for Android using Kotlin and modular XML layouts. Application state is securely partitioned using Firebase Authentication (supporting session persistence and user data sandboxing). Real-time telemetry, calorie calculations, and fitness logs are synchronized with a cloud-hosted NoSQL Cloud Firestore database, ensuring offline-first resilience and low-latency cloud synchronization.",
+    keyHighlights: [
+      "Native Android architecture with Kotlin delivering fluid UI response and minimal memory overhead.",
+      "Firebase Authentication integration ensuring secure, isolated user session management.",
+      "Cloud Firestore NoSQL database modeling for real-time fitness metrics and daily calorie logs.",
+      "Native XML layout components optimized across diverse Android screen densities and orientations.",
+      "Production-ready signed APK release (20.1 MB) available for immediate device installation."
+    ],
+    impact: "Functional native mobile application with full cloud connectivity, demonstrating native Android engineering and cloud backend integration."
   },
   {
     id: "addithalam",
@@ -397,6 +418,16 @@ export default memo(function BlogsPage({ onBackToHome }) {
                         >
                           <span>Live Site</span>
                           <ExternalLink size={13} />
+                        </a>
+                      )}
+                      {study.apk && (
+                        <a
+                          href={study.apk}
+                          download
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors shadow-xs"
+                        >
+                          <Download size={13} />
+                          <span>Download APK (20 MB)</span>
                         </a>
                       )}
                       {study.github && (

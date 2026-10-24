@@ -30,7 +30,7 @@ const ABOUT_CARDS = [
       "MailAI: Executive AI triage pipeline delivering priority email alerts directly to WhatsApp.",
       "Ruthra Medicines: Bilingual Siddha & Ayurveda e-commerce with automated PDF billing and courier dispatch.",
       "Global Talent Connect & SS40 Portal: 100-point candidate screening and high-throughput corporate CMS.",
-      "Engineered complete web applications with real-time alerts, secure checkout, and easy-to-use dashboards."
+      "Zentra Fitness: Native Android fitness and calorie tracking app built with Kotlin, Firebase Auth, and Cloud Firestore."
     ],
     accent: "#2C3480",
     bgAccent: "#EEF0FD"

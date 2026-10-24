@@ -32,6 +32,19 @@
       "tags": ["case-studies", "architecture", "microservices", "blogs"]
     },
     {
+      "identifier": "urn:ai:abrahamsamuel.vercel.app:zentra-fitness",
+      "displayName": "Zentra Fitness Android Application",
+      "type": "application/vnd.android.package-archive",
+      "url": "https://abrahamsamuel.vercel.app/downloads/Zentra.apk",
+      "description": "Native Android mobile fitness and calorie tracking application developed using Kotlin, XML, Firebase Authentication, and Cloud Firestore.",
+      "representativeQueries": [
+        "Zentra Fitness APK download",
+        "Android Kotlin fitness app portfolio Abraham Samuel",
+        "Android developer in Tirunelveli"
+      ],
+      "tags": ["android", "kotlin", "firebase", "firestore", "mobile-app"]
+    },
+    {
       "identifier": "urn:ai:abrahamsamuel.vercel.app:llms-txt",
       "displayName": "LLM Digest & Machine Context",
       "type": "text/markdown",

@@ -93,6 +93,27 @@ export const allProjects = [
     accent: "violet"
   },
   {
+    id: "zentra-fitness",
+    title: "Zentra Fitness — Android App",
+    category: "Mobile & Cloud",
+    shortDesc: "Native Android fitness and calorie tracking app built with Kotlin, XML, Firebase Auth, and Cloud Firestore.",
+    overview: "Zentra Fitness is a native Android mobile application designed for personal fitness management, daily calorie intake tracking, and cloud data synchronization.",
+    problemSolved: "Fitness enthusiasts struggle with over-complicated, paywalled workout apps. Zentra Fitness provides a clean, native Android mobile experience with real-time Cloud Firestore synchronization and secure Firebase Authentication.",
+    keyFeatures: [
+      "Native Android architecture developed using Kotlin and responsive XML UI layouts.",
+      "Secure user authentication state management powered by Firebase Authentication.",
+      "Cloud-hosted NoSQL database connectivity with Cloud Firestore for real-time fitness telemetry.",
+      "Dedicated calorie tracking and digital fitness progress logging.",
+      "Production-ready signed APK (20.1 MB) available for direct Android installation."
+    ],
+    technologies: ["Kotlin", "Android SDK", "XML Layouts", "Firebase Auth", "Cloud Firestore", "NoSQL"],
+    live: null,
+    github: null,
+    apk: "/downloads/Zentra.apk",
+    highlight: "Native Android App",
+    accent: "emerald"
+  },
+  {
     id: "addithalam-foundation",
     title: "Addithalam Foundation — NGO Digital Platform",
     category: "Applications",
