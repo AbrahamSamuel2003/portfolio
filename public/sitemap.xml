@@ -1,15 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Home / Main Engineering Portfolio -->
   <url>
     <loc>https://abrahamsamuel.vercel.app/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/avatar-round.webp</image:loc>
+      <image:title>Abraham Samuel T — Best Full Stack Developer in Tirunelveli</image:title>
+      <image:caption>Abraham Samuel T, Full Stack Developer and AI Systems Engineer based in Tirunelveli, Tamil Nadu, India.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/mailai.webp</image:loc>
+      <image:title>MailAI — AI Email to WhatsApp Pipeline</image:title>
+      <image:caption>Executive email triage and WhatsApp notification engine built by Abraham Samuel T.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ruthra.webp</image:loc>
+      <image:title>Ruthra Medicines — Bilingual Healthcare E-Commerce</image:title>
+      <image:caption>Traditional Siddha and Ayurveda direct-to-consumer e-commerce with automated GST billing.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/gtc.webp</image:loc>
+      <image:title>Global Talent Connect (GTC) — AI Recruitment Platform</image:title>
+      <image:caption>Automated 100-point candidate scoring engine and proctored technical evaluations.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/zentra.webp</image:loc>
+      <image:title>Zentra Fitness — Android Mobile App</image:title>
+      <image:caption>Native Android fitness and calorie tracking application built with Kotlin, Firebase Auth, and Cloud Firestore.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/addithalam.webp</image:loc>
+      <image:title>Addithalam Foundation — NGO Digital Platform</image:title>
+      <image:caption>Official bilingual digital platform for a public charitable trust empowering underprivileged youth in tech.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ss40.webp</image:loc>
+      <image:title>SS40 Network Enterprise Portal</image:title>
+      <image:caption>Enterprise corporate web platform with unified admin CMS and client lead capture.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/voucherly.webp</image:loc>
+      <image:title>Voucherly — Desktop Offline Invoicing Software</image:title>
+      <image:caption>Cross-platform offline billing and invoicing software for small businesses.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ai-importer.webp</image:loc>
+      <image:title>AI Content Importer WordPress Plugin</image:title>
+      <image:caption>WordPress automation plugin that converts spreadsheets into SEO articles and products using AI.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ims.webp</image:loc>
+      <image:title>Intern Management System (IMS)</image:title>
+      <image:caption>Role-based internship lifecycle platform with daily task tracking and evaluations.</image:caption>
+    </image:image>
   </url>
+
+  <!-- 2. Engineering Blogs & Architecture Case Studies -->
   <url>
     <loc>https://abrahamsamuel.vercel.app/blogs</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/mailai.webp</image:loc>
+      <image:title>Architecture Case Study — MailAI</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ruthra.webp</image:loc>
+      <image:title>Architecture Case Study — Ruthra Medicines</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/gtc.webp</image:loc>
+      <image:title>Architecture Case Study — Global Talent Connect</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/zentra.webp</image:loc>
+      <image:title>Engineering Case Study — Zentra Fitness Android App</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/addithalam.webp</image:loc>
+      <image:title>Architecture Case Study — Addithalam Foundation</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://abrahamsamuel.vercel.app/images/projects/ss40.webp</image:loc>
+      <image:title>Architecture Case Study — SS40 Network Portal</image:title>
+    </image:image>
   </url>
+
+  <!-- 3. Zentra Fitness Native Android APK Download -->
+  <url>
+    <loc>https://abrahamsamuel.vercel.app/downloads/Zentra.apk</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 4. LLMs Machine Digest -->
+  <url>
+    <loc>https://abrahamsamuel.vercel.app/llms.txt</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
