@@ -12,6 +12,7 @@ const CASE_STUDIES = [
     id: "mailai",
     title: "MailAI — AI Email to WhatsApp Automation Engine",
     category: "AI & Microservices",
+    image: "/images/projects/mailai.webp",
     tagline: "Bridging Enterprise Inboxes with WhatsApp via Event-Driven Fastify & Gemini AI",
     period: "2024 – Present",
     accent: "#4452E6",
@@ -32,6 +33,7 @@ const CASE_STUDIES = [
     id: "ruthra-medicines",
     title: "Ruthra Medicines — Bilingual Healthcare E-Commerce",
     category: "Full Stack & SaaS",
+    image: "/images/projects/ruthra.webp",
     tagline: "Traditional Siddha & Ayurveda Direct-to-Consumer Platform with Automated Billing",
     period: "2024 – Present",
     accent: "#0D9488",
@@ -52,6 +54,7 @@ const CASE_STUDIES = [
     id: "gtc",
     title: "Global Talent Connect (GTC) — AI Recruitment & Skill Scoring",
     category: "Full Stack & AI",
+    image: "/images/projects/gtc.webp",
     tagline: "Automated 100-Point Candidate Evaluation with Proctored Technical Exams",
     period: "2024 – Present",
     accent: "#6366F1",
@@ -72,6 +75,7 @@ const CASE_STUDIES = [
     id: "zentra-fitness",
     title: "Zentra Fitness — Android Fitness & Calorie Tracking App",
     category: "Mobile & Cloud",
+    image: "/images/projects/zentra.webp",
     tagline: "Native Android App Engineered with Kotlin, XML, Firebase Auth & Cloud Firestore",
     period: "2024",
     accent: "#10B981",
@@ -93,6 +97,7 @@ const CASE_STUDIES = [
     id: "addithalam",
     title: "Addithalam Foundation — Bilingual NGO Digital Platform",
     category: "Applications & NGO",
+    image: "/images/projects/addithalam.webp",
     tagline: "Empowering Rural Students & Women in IT with Free Tech Education",
     period: "2024 – 2025",
     accent: "#D97706",
@@ -112,6 +117,7 @@ const CASE_STUDIES = [
     id: "ss40-portal",
     title: "SS40 Network Enterprise Portal & Custom CMS",
     category: "Enterprise Systems",
+    image: "/images/projects/ss40.webp",
     tagline: "Unified Multi-Division Digital Architecture for Corporate Services & EdTech",
     period: "2024 – Present",
     accent: "#2C3480",
@@ -131,6 +137,7 @@ const CASE_STUDIES = [
     id: "samdani-agency",
     title: "Samdani Agency Stock Management System",
     category: "Business Software",
+    image: "/images/projects/ims.webp",
     tagline: "Real-Time Warehouse Inventory Telemetry & Adjustment Logs",
     period: "2024",
     accent: "#0284C7",
@@ -149,6 +156,7 @@ const CASE_STUDIES = [
     id: "voucherly",
     title: "Voucherly — Offline-First Desktop Invoicing Software",
     category: "Desktop Applications",
+    image: "/images/projects/voucherly.webp",
     tagline: "Subscription-Free Desktop Financial Ledger for Small Businesses",
     period: "2024",
     accent: "#4338CA",
@@ -168,6 +176,7 @@ const CASE_STUDIES = [
     id: "ai-importer",
     title: "AI Content Importer — Open Source WordPress Plugin",
     category: "Open Source & Plugins",
+    image: "/images/projects/ai-importer.webp",
     tagline: "Automated Bulk Spreadsheet Ingestion with LLM Taxonomy Generation",
     period: "2024",
     accent: "#9333EA",
@@ -443,6 +452,21 @@ export default memo(function BlogsPage({ onBackToHome }) {
                       )}
                     </div>
                   </div>
+
+                  {/* Visual Preview Screenshot */}
+                  {study.image && (
+                    <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-[#E2E8F0] shadow-2xs">
+                      <img
+                        src={study.image}
+                        alt={`${study.title} preview screenshot`}
+                        width="700"
+                        height="330"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto max-h-[380px] object-cover object-top hover:scale-[1.01] transition-transform duration-300"
+                      />
+                    </div>
+                  )}
 
                   {/* Problem & Architecture Grid */}
                   <div className="grid md:grid-cols-2 gap-5 text-xs sm:text-sm leading-relaxed">

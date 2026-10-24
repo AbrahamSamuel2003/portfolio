@@ -153,9 +153,25 @@ export default function ProjectCarousel({ projects }) {
           <div
             key={project.id}
             onClick={() => setSelectedProject(project)}
-            className="w-[300px] sm:w-[340px] max-w-[350px] flex-shrink-0 flex flex-col justify-between p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-[border-color,box-shadow] duration-200 snap-start text-left group cursor-pointer card-stable"
+            className="w-[300px] sm:w-[340px] max-w-[350px] flex-shrink-0 flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/40 hover:shadow-md transition-[border-color,box-shadow] duration-200 snap-start text-left group cursor-pointer card-stable"
           >
             <div className="space-y-3">
+              {/* Card Top Preview Banner */}
+              {project.image && (
+                <div className="relative w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-slate-100 border border-slate-200/80 group-hover:border-[#4452E6]/30 transition-colors">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview screenshot`}
+                    width="340"
+                    height="160"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/15 via-transparent to-transparent pointer-events-none" />
+                </div>
+              )}
+
               {/* Category & Highlight */}
               <div className="flex items-center justify-between gap-2">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#EEF0FD] border border-[#4452E6]/20 text-[11px] font-semibold text-[#2C3480]">
@@ -343,6 +359,21 @@ export default function ProjectCarousel({ projects }) {
 
                   {/* Scrollable Body: Content with clean slim custom scrollbar */}
                   <div className="flex-1 overflow-y-auto p-5 sm:p-7 space-y-6 modal-scrollbar">
+                    {/* Full Preview Banner */}
+                    {selectedProject.image && (
+                      <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-[#E2E8F0] shadow-sm">
+                        <img
+                          src={selectedProject.image}
+                          alt={`${selectedProject.title} full UI preview`}
+                          width="700"
+                          height="350"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-auto object-cover object-top"
+                        />
+                      </div>
+                    )}
+
                     {/* What It Is / Plain English Summary */}
                     <div className="space-y-1.5">
                       <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#64748B] font-semibold">
