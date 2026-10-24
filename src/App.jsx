@@ -66,8 +66,8 @@ export default function App() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: "-20% 0px -60% 0px",
-      threshold: [0, 0.25, 0.5, 0.75]
+      rootMargin: "-15% 0px -50% 0px",
+      threshold: [0.1]
     });
 
     SECTION_IDS.forEach((id) => {
@@ -133,17 +133,26 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative overflow-x-hidden selection:bg-[#4452E6]/15 selection:text-[#2C3480]">
 
-      {/* GLOBAL LIGHT MODE AMBIENT LIGHTING & SUBTLE ARCHITECTURAL GRID (Hardware Accelerated) */}
+      {/* GLOBAL LIGHT MODE AMBIENT LIGHTING (High-Performance Zero-Filter Radial Gradients) */}
       <div
         className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-        style={{ transform: "translate3d(0,0,0)", willChange: "transform", contain: "paint" }}
+        style={{ transform: "translate3d(0,0,0)", contain: "strict" }}
       >
         {/* Azure Ethereal Top-Left Glow */}
-        <div className="absolute -top-32 left-1/4 w-[850px] h-[850px] bg-[#4452E6]/[0.045] rounded-full blur-[120px] transform-gpu" />
+        <div
+          className="absolute -top-32 left-1/4 w-[850px] h-[850px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(68, 82, 230, 0.055) 0%, transparent 68%)" }}
+        />
         {/* Cobalt Ambient Right Glow */}
-        <div className="absolute top-1/3 right-0 w-[650px] h-[650px] bg-[#2C3480]/[0.035] rounded-full blur-[120px] transform-gpu" />
+        <div
+          className="absolute top-1/3 right-0 w-[650px] h-[650px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(44, 52, 128, 0.045) 0%, transparent 70%)" }}
+        />
         {/* Soft Blue Bottom Accent */}
-        <div className="absolute bottom-1/4 left-0 w-[550px] h-[550px] bg-[#4452E6]/[0.03] rounded-full blur-[120px] transform-gpu" />
+        <div
+          className="absolute bottom-1/4 left-0 w-[550px] h-[550px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(68, 82, 230, 0.04) 0%, transparent 70%)" }}
+        />
         {/* Technical Sub-grid */}
         <div className="absolute inset-0 grid-bg opacity-60" />
       </div>

@@ -272,27 +272,26 @@ export default function ProjectCarousel({ projects }) {
         createPortal(
           <AnimatePresence>
             {selectedProject && (
-              <div
+              <motion.div
+                key="project-modal-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
                 onClick={() => setSelectedProject(null)}
-                className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-hidden cursor-pointer"
+                className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-hidden cursor-pointer bg-[#0F172A]/50 backdrop-blur-sm"
+                style={{ willChange: "opacity" }}
               >
-                {/* Frosted Backdrop */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed inset-0 bg-[#0F172A]/50 backdrop-blur-sm pointer-events-none"
-                />
-
                 {/* Modal Dialog Surface (Stops propagation so clicking inside does not dismiss) */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                  key="project-modal-surface"
+                  initial={{ opacity: 0, scale: 0.95, y: 14 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96, y: 12 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                  exit={{ opacity: 0, scale: 0.96, y: 10 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 28, mass: 0.7 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative z-10 w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden text-left cursor-default card-stable"
+                  className="relative z-10 w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl flex flex-col overflow-hidden text-left cursor-default card-stable transform-gpu"
+                  style={{ willChange: "transform, opacity" }}
                 >
                   {/* Pinned Top Header: Category, Title, Action CTAs (Visit Live Application at top!) & Close button */}
                   <div className="p-5 sm:p-7 pb-4 sm:pb-5 border-b border-[#E2E8F0] bg-white flex flex-col gap-4 flex-shrink-0">
@@ -467,7 +466,7 @@ export default function ProjectCarousel({ projects }) {
                     </div>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
             )}
           </AnimatePresence>,
           document.body
