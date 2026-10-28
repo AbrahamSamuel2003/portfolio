@@ -78,39 +78,6 @@ const About = memo(function About() {
           subtitle="A high-level summary of my professional role, production projects, academic credentials, and internships."
         />
 
-        {/* Executive Bio Lead-in Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.45 }}
-          className="p-5 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-5 card-stable"
-        >
-          <div className="space-y-1.5 max-w-3xl">
-            <h3 className="text-base sm:text-xl font-serif font-bold text-[#2C3480] tracking-tight flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-0.5 sm:gap-2">
-              <span className="text-[#0F172A] sm:text-[#2C3480]">Abraham Samuel T</span>
-              <span className="hidden sm:inline text-[#94A3B8] font-normal">—</span>
-              <span className="text-[#4452E6] sm:text-[#2C3480] font-sans font-semibold text-xs sm:text-base">
-                Full Stack Software Engineer
-              </span>
-            </h3>
-            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-              Based in <strong className="text-[#0F172A] font-semibold">Tirunelveli, Tamil Nadu</strong> and engineering at <strong className="text-[#0F172A] font-semibold">SS40 NETWORK PRIVATE LIMITED</strong>, I specialize in building high-throughput web portals, event-driven backend services, and purposeful AI pipelines. I focus on building reliable, secure, and production-tested software that solves real business friction for regional and global clients.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap sm:flex-col items-center sm:items-end justify-center gap-2 flex-shrink-0 text-xs font-mono">
-            <span className="px-3 py-1 rounded-full bg-[#EEF0FD] text-[#2C3480] font-semibold border border-[#4452E6]/20">
-              MCA Distinction
-            </span>
-            <span className="px-3 py-1 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
-              Full Stack @ SS40
-            </span>
-            <span className="px-3 py-1 rounded-full bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
-              Tirunelveli, TN
-            </span>
-          </div>
-        </motion.div>
 
         {/* ── MOBILE VIEW: 3D ROTATING CUBE (< md) ── */}
         <div className="block md:hidden w-full">
