@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUp, Github, Linkedin, Instagram, MessageCircle, Mail } from "lucide-react";
+import { Github, Linkedin, Instagram, MessageCircle, Mail } from "lucide-react";
 import avatarImg from "../../assets/avatar-round.webp";
 
 export default function Footer({ onToTop, onNavigate }) {
@@ -130,7 +130,7 @@ export default function Footer({ onToTop, onNavigate }) {
 
         </div>
 
-        {/* Bottom Tier: Copyright & Back-to-Top */}
+        {/* Bottom Tier: Copyright */}
         <div className="pt-6 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-[#64748B] font-mono text-center sm:text-left">
             <span>© 2026 Abraham Samuel T. All rights reserved.</span>
@@ -142,18 +142,6 @@ export default function Footer({ onToTop, onNavigate }) {
               Blogs
             </button>
           </div>
-
-          <motion.button
-            onClick={onToTop}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            aria-label="Scroll back to top"
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] text-xs font-semibold text-[#2C3480] hover:text-[#4452E6] hover:border-[#4452E6]/30 hover:bg-[#EEF0FD] transition-[background-color,border-color,color] duration-200 cursor-pointer shadow-2xs"
-          >
-            <span>Back to top</span>
-            <ArrowUp size={13} />
-          </motion.button>
         </div>
 
       </div>
