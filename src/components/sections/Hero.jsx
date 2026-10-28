@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Mail, Download, MapPin } from "lucide-react";
+import { ChevronRight, Mail, Download } from "lucide-react";
 import HeroAvatar from "../ui/HeroAvatar.jsx";
 
 const TARGET_ROLE = "Full Stack Developer";
@@ -51,14 +51,10 @@ export default function Hero({ onNavigate }) {
 
         {/* Left Editorial Content */}
         <div className="space-y-3 sm:space-y-5 text-center lg:text-left order-last lg:order-first flex flex-col items-center lg:items-start">
-          {/* Welcome & Location Badges */}
+          {/* Welcome Badge */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
             <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] font-mono text-[11px] sm:text-xs font-semibold tracking-wider uppercase shadow-xs">
               <span>Welcome to My Portfolio</span>
-            </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 font-mono text-[11px] sm:text-xs font-medium shadow-xs">
-              <MapPin size={12} className="text-[#4452E6]" />
-              <span>Tirunelveli, India</span>
             </div>
           </div>
 
