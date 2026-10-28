@@ -150,7 +150,7 @@ const Contact = memo(function Contact() {
             className="lg:col-span-7"
           >
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] shadow-xl shadow-[#2C3480]/5 text-left">
-              <h3 className="text-lg font-bold text-[#2C3480] mb-6 flex items-center justify-center lg:justify-start gap-2 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2C3480] mb-6 flex items-center justify-center lg:justify-start gap-2 text-center lg:text-left">
                 <span>Send a Direct Message</span>
               </h3>
 

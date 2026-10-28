@@ -39,7 +39,7 @@ const Skills = memo(function Skills() {
                       <div className="w-10 h-10 rounded-xl bg-[#EEF0FD] border border-[#4452E6]/25 flex items-center justify-center text-[#4452E6] group-hover:scale-105 transition-transform flex-shrink-0">
                         <Icon size={20} />
                       </div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#2C3480] tracking-tight">
+                      <h3 className="text-base sm:text-lg font-serif font-bold text-[#2C3480] tracking-tight">
                         {category}
                       </h3>
                     </div>

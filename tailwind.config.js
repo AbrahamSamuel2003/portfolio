@@ -5,6 +5,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
       animation: {
         'pulse-slow': 'pulse 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',

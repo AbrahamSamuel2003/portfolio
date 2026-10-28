@@ -17,6 +17,10 @@
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
   --shadow-md: 0 4px 16px -2px rgba(44, 52, 128, 0.06);
   --shadow-lg: 0 12px 32px -4px rgba(44, 52, 128, 0.08);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ── BASE & ANTI-FLICKER ── */
@@ -35,7 +39,7 @@ html {
 }
 
 body {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;

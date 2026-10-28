@@ -12,15 +12,15 @@ export default function SectionHeading({ badge, title, highlight, subtitle, alig
       className={`mb-6 sm:mb-8 ${isLeft ? "text-left" : "text-center"}`}
     >
       {badge && (
-        <div className={`inline-flex items-center px-3 py-1 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] text-[11px] font-semibold tracking-wide uppercase mb-3 shadow-xs`}>
+        <div className={`inline-flex items-center px-3 py-1 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] font-mono text-[11px] font-semibold tracking-wider uppercase mb-3 shadow-xs`}>
           <span>{badge}</span>
         </div>
       )}
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] tracking-tight leading-tight">
-        {title} {highlight && <span className="gradient-text">{highlight}</span>}
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#0F172A] tracking-[-0.01em] leading-tight">
+        {title} {highlight && <span className="gradient-text italic font-serif">{highlight}</span>}
       </h2>
       {subtitle && (
-        <p className={`text-[#64748B] text-sm sm:text-base max-w-2xl mt-2 leading-relaxed ${isLeft ? "" : "mx-auto"}`}>
+        <p className={`text-[#64748B] font-sans text-sm sm:text-base max-w-2xl mt-2 leading-relaxed ${isLeft ? "" : "mx-auto"}`}>
           {subtitle}
         </p>
       )}

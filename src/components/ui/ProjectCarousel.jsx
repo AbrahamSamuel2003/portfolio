@@ -188,7 +188,7 @@ export default function ProjectCarousel({ projects }) {
 
               {/* Title & Description */}
               <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-[#2C3480] tracking-tight group-hover:text-[#4452E6] transition-colors line-clamp-1">
+                <h3 className="text-lg font-serif font-semibold text-[#2C3480] tracking-tight group-hover:text-[#4452E6] transition-colors line-clamp-1">
                   {project.title}
                 </h3>
                 <p className="text-xs text-[#475569] leading-relaxed line-clamp-3">
@@ -301,7 +301,7 @@ export default function ProjectCarousel({ projects }) {
                           {getCategoryIcon(selectedProject.category)}
                           <span className="truncate">{selectedProject.category}</span>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#2C3480] tracking-tight leading-tight">
+                        <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#2C3480] tracking-tight leading-tight">
                           {selectedProject.title}
                         </h3>
                       </div>

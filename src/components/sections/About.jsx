@@ -87,10 +87,10 @@ const About = memo(function About() {
           className="p-5 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-5 card-stable"
         >
           <div className="space-y-1.5 max-w-3xl">
-            <h3 className="text-base sm:text-lg font-bold text-[#2C3480] tracking-tight flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-0.5 sm:gap-2">
+            <h3 className="text-base sm:text-xl font-serif font-bold text-[#2C3480] tracking-tight flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-0.5 sm:gap-2">
               <span className="text-[#0F172A] sm:text-[#2C3480]">Abraham Samuel T</span>
               <span className="hidden sm:inline text-[#94A3B8] font-normal">—</span>
-              <span className="text-[#4452E6] sm:text-[#2C3480] font-semibold text-xs sm:text-lg">
+              <span className="text-[#4452E6] sm:text-[#2C3480] font-sans font-semibold text-xs sm:text-base">
                 Full Stack Software Engineer
               </span>
             </h3>
@@ -145,7 +145,7 @@ const About = memo(function About() {
                         <span className="text-[10px] font-mono uppercase tracking-wider text-[#475569] block font-semibold">
                           {card.category}
                         </span>
-                        <h3 className="text-sm sm:text-base font-bold text-[#2C3480] leading-tight group-hover:text-[#4452E6] transition-colors">
+                        <h3 className="text-base sm:text-lg font-serif font-bold text-[#2C3480] leading-tight group-hover:text-[#4452E6] transition-colors">
                           {card.title}
                         </h3>
                       </div>

@@ -70,7 +70,7 @@ const Experience = memo(function Experience() {
                 >
                   {/* Left Role & Company Info */}
                   <div className="space-y-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#2C3480] group-hover:text-[#4452E6] transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2C3480] group-hover:text-[#4452E6] transition-colors">
                       {exp.role}
                     </h3>
                     <p className="text-[#4452E6] font-semibold text-sm sm:text-base">

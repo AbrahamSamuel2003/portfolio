@@ -53,10 +53,10 @@ export default function Hero({ onNavigate }) {
         <div className="space-y-3 sm:space-y-5 text-center lg:text-left order-last lg:order-first flex flex-col items-center lg:items-start">
           {/* Welcome & Location Badges */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-            <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] text-[11px] sm:text-xs font-semibold tracking-wide shadow-xs">
+            <div className="inline-flex items-center px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#4452E6]/25 bg-[#EEF0FD] text-[#4452E6] font-mono text-[11px] sm:text-xs font-semibold tracking-wider uppercase shadow-xs">
               <span>Welcome to My Portfolio</span>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 text-[11px] sm:text-xs font-medium shadow-xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 font-mono text-[11px] sm:text-xs font-medium shadow-xs">
               <MapPin size={12} className="text-[#4452E6]" />
               <span>Tirunelveli, India</span>
             </div>
@@ -64,20 +64,20 @@ export default function Hero({ onNavigate }) {
 
           {/* Main Name & Title */}
           <div className="space-y-1.5 sm:space-y-2">
-            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0F172A] leading-[1.12]">
+            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-[#0F172A] leading-[1.08]">
               Abraham <br className="hidden sm:inline" />
-              <span className="gradient-text">Samuel T</span>
+              <span className="gradient-text italic font-serif">Samuel T</span>
             </h1>
 
             {/* Dynamic Typewriter Heading (Zero layout shift / flicker) */}
             <div className="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 min-h-[26px] sm:min-h-[36px]">
-              <span className="text-[#64748B] text-sm sm:text-2xl font-medium">I am a</span>
+              <span className="text-[#64748B] text-sm sm:text-2xl font-normal font-serif italic">I am a</span>
               <TypewriterRole />
               <span className="inline-block w-[2.5px] h-[1.15em] bg-[#4452E6] rounded-full translate-y-[2px]" />
             </div>
 
             {/* Specialization Tags Row (Zero dots) */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 pt-0.5 text-[11px] sm:text-xs font-semibold text-[#4452E6]">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 pt-0.5 font-mono text-[11px] sm:text-xs font-semibold text-[#4452E6]">
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Full Stack</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">AI Systems</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Enterprise Web</span>

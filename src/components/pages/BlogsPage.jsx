@@ -341,9 +341,9 @@ export default memo(function BlogsPage({ onBackToHome }) {
             <span>Technical Insights, Publications &amp; Works Directory</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#0F172A] tracking-tight leading-[1.18] max-w-4xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#0F172A] tracking-tight leading-[1.12] max-w-4xl">
             Full Stack Engineering, Production Architectures &amp; Works by{" "}
-            <span className="gradient-text">Abraham Samuel T</span>
+            <span className="gradient-text italic font-serif">Abraham Samuel T</span>
           </h1>
 
           <p className="text-sm sm:text-base text-[#475569] max-w-3xl leading-relaxed">
