@@ -81,7 +81,6 @@ export default function Hero({ onNavigate }) {
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Full Stack</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">AI Systems</span>
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#EEF0FD] border border-[#4452E6]/20">Enterprise Web</span>
-              <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white border border-slate-200 text-slate-600 font-medium">Tirunelveli, IN</span>
             </div>
           </div>
 
