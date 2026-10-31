@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, Check, Building2, Linkedin, Github, Instagram, MessageCircle, ArrowUpRight, MapPin } from "lucide-react";
+import { Mail, Phone, Send, Check, Building2, Linkedin, Github, Instagram, MessageCircle, ArrowUpRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading.jsx";
 
 const Contact = memo(function Contact() {
@@ -75,24 +75,14 @@ const Contact = memo(function Contact() {
                   href: "https://ss40network.com/",
                   color: "text-[#2C3480]",
                   bg: "bg-indigo-50"
-                },
-                {
-                  icon: MapPin,
-                  label: "Location",
-                  val: "Tirunelveli, Tamil Nadu, India",
-                  href: "https://maps.google.com/?q=Tirunelveli,+Tamil+Nadu",
-                  color: "text-rose-600",
-                  bg: "bg-rose-50"
-                },
+                }
               ].map((c) => (
                 <a
                   key={c.label}
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className={`flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-[border-color,background-color] duration-200 group cursor-pointer card-stable ${
-                    c.label === "Location" ? "col-span-2 sm:col-span-1 justify-center" : ""
-                  }`}
+                  className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] shadow-sm transition-[border-color,background-color] duration-200 group cursor-pointer card-stable"
                 >
                   <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
                     <c.icon className={c.color} size={17} />
