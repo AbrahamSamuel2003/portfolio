@@ -6,9 +6,16 @@ import {
   Bot, Layers, Monitor, Zap, CheckCircle2, X, Download, Smartphone
 } from "lucide-react";
 
-export default function ProjectCarousel({ projects }) {
+export default function ProjectCarousel({ 
+  projects, 
+  selectedProject: propSelectedProject, 
+  onSelectProject: propOnSelectProject 
+}) {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [internalSelectedProject, setInternalSelectedProject] = useState(null);
+
+  const selectedProject = propSelectedProject !== undefined ? propSelectedProject : internalSelectedProject;
+  const setSelectedProject = propOnSelectProject || setInternalSelectedProject;
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
