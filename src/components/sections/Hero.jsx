@@ -2,6 +2,7 @@ import { useState, useEffect, memo } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Mail, Download } from "lucide-react";
 import HeroAvatar from "../ui/HeroAvatar.jsx";
+import Magnetic from "../ui/Magnetic.jsx";
 
 const TARGET_ROLE = "Full Stack Developer";
 
@@ -87,27 +88,31 @@ export default function Hero({ onNavigate }) {
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1 w-full">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              onClick={() => onNavigate("projects")}
-              className="flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#2C3480] text-white font-bold text-xs sm:text-sm hover:bg-[#4452E6] transition-[background-color,box-shadow] duration-200 shadow-md shadow-[#2C3480]/20 cursor-pointer min-h-[44px]"
-            >
-              <span>Explore Projects</span>
-              <ChevronRight size={16} />
-            </motion.button>
+            <Magnetic strength={0.32}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                onClick={() => onNavigate("projects")}
+                className="flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#2C3480] text-white font-bold text-xs sm:text-sm hover:bg-[#4452E6] transition-[background-color,box-shadow] duration-200 shadow-md shadow-[#2C3480]/20 cursor-pointer min-h-[44px]"
+              >
+                <span>Explore Projects</span>
+                <ChevronRight size={16} />
+              </motion.button>
+            </Magnetic>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              onClick={() => onNavigate("contact")}
-              className="flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] font-medium text-xs sm:text-sm hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-[background-color,border-color,box-shadow] duration-200 cursor-pointer shadow-xs min-h-[44px]"
-            >
-              <span>Contact Me</span>
-              <Mail size={16} />
-            </motion.button>
+            <Magnetic strength={0.32}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                onClick={() => onNavigate("contact")}
+                className="flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] font-medium text-xs sm:text-sm hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-[background-color,border-color,box-shadow] duration-200 cursor-pointer shadow-xs min-h-[44px]"
+              >
+                <span>Contact Me</span>
+                <Mail size={16} />
+              </motion.button>
+            </Magnetic>
 
             <a
               href="/Abraham_Samuel_T.pdf"

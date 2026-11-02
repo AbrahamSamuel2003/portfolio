@@ -11,6 +11,7 @@ import Experience from "./components/sections/Experience.jsx";
 import Skills from "./components/sections/Skills.jsx";
 import Certifications from "./components/sections/Certifications.jsx";
 import Contact from "./components/sections/Contact.jsx";
+import SmoothScroll from "./components/ui/SmoothScroll.jsx";
 
 const BlogsPage = lazy(() => import("./components/pages/BlogsPage.jsx"));
 
@@ -78,13 +79,23 @@ export default function App() {
     return () => observer.disconnect();
   }, [currentView]);
 
+  const scrollToTarget = (target) => {
+    if (window.__lenis) {
+      window.__lenis.scrollTo(target, { offset: -20 });
+    } else if (target instanceof HTMLElement) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const handleNavigate = useCallback((id) => {
     if (id === "blogs") {
       setCurrentView("blogs");
       if (typeof window !== "undefined" && window.location.pathname !== "/blogs") {
         window.history.pushState({ page: "blogs" }, "", "/blogs");
       }
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToTarget(0);
       return;
     }
 
@@ -96,7 +107,7 @@ export default function App() {
       setTimeout(() => {
         const target = document.getElementById(id);
         if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          scrollToTarget(target);
           setActiveSection(id);
         }
       }, 60);
@@ -105,7 +116,7 @@ export default function App() {
 
     const target = document.getElementById(id);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToTarget(target);
       setActiveSection(id);
     }
   }, [currentView]);
@@ -115,16 +126,17 @@ export default function App() {
     if (typeof window !== "undefined" && window.location.pathname !== "/") {
       window.history.pushState({ page: "home" }, "", "/");
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTarget(0);
   }, []);
 
   const handleToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTarget(0);
   }, []);
 
   if (currentView === "blogs") {
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center text-slate-400 font-mono text-xs">Loading Blogs...</div>}>
+        <SmoothScroll />
         <BlogsPage onBackToHome={handleBackToHome} />
       </Suspense>
     );
@@ -132,6 +144,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative overflow-x-hidden selection:bg-[#4452E6]/15 selection:text-[#2C3480]">
+      {/* Inertial Momentum Smooth Scrolling */}
+      <SmoothScroll />
 
       {/* GLOBAL LIGHT MODE AMBIENT LIGHTING (High-Performance Zero-Filter Radial Gradients) */}
       <div
