@@ -23,25 +23,69 @@ const MOBILE_NAV_ITEMS = [
 
 export default function Navbar({ activeSection, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+    let lastY = typeof window !== "undefined" ? window.scrollY : 0;
+    let ticking = false;
+    let frameId = null;
+
+    const updateScrollState = () => {
+      if (typeof window === "undefined") return;
+      const currentY = window.scrollY;
+
+      // Scrolled threshold: subtle elevation when past 30px
+      setIsScrolled(currentY > 30);
+
+      // Always show navbar near the top of the page
+      if (currentY <= 25) {
+        setIsHidden(false);
+      } else {
+        const diff = currentY - lastY;
+
+        // Hide when scrolling down past 80px
+        if (diff > 8 && currentY > 80) {
+          setIsHidden(true);
+        }
+        // Immediately reveal when scrolling up
+        else if (diff < -8) {
+          setIsHidden(false);
+        }
+      }
+
+      lastY = currentY;
+      ticking = false;
     };
+
+    updateScrollState();
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      frameId = window.requestAnimationFrame(updateScrollState);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", updateScrollState, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateScrollState);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
     <>
       {/* ── 1. DESKTOP FLOATING NAVBAR (Hidden on mobile) ── */}
-      <header className="hidden md:flex fixed top-3 sm:top-4 left-0 right-0 z-50 justify-center px-4 transition-all duration-300 pointer-events-none">
-        <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="w-full max-w-5xl pointer-events-auto"
-        >
+      <header
+        className={`hidden md:flex fixed top-3 sm:top-4 left-0 right-0 z-50 justify-center px-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu ${
+          isHidden
+            ? "-translate-y-28 opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100 pointer-events-auto"
+        }`}
+      >
+        <div className="w-full max-w-5xl">
           <nav
             className={`rounded-2xl transition-all duration-300 flex items-center justify-between border ${
               isScrolled
@@ -108,11 +152,15 @@ export default function Navbar({ activeSection, onNavigate }) {
               <span>Resume</span>
             </motion.a>
           </nav>
-        </motion.div>
+        </div>
       </header>
 
       {/* ── 2. MOBILE TOP HEADER BAR (Minimal & Native) ── */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-b border-[#E2E8F0] px-4 py-2.5 flex items-center justify-between shadow-2xs">
+      <header
+        className={`md:hidden fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-b border-[#E2E8F0] px-4 py-2.5 flex items-center justify-between shadow-2xs transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu ${
+          isHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <div
           onClick={() => onNavigate("home")}
           className="flex items-center gap-2.5 cursor-pointer"
