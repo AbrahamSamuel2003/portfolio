@@ -36,8 +36,7 @@ const HeroAvatar = memo(function HeroAvatar() {
       {/* Multi-layered Ambient Light & Blueprint Radial Rings */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#4452E6]/20 via-[#2C3480]/10 to-transparent rounded-full blur-2xl sm:blur-3xl pointer-events-none" />
       
-      {/* Concentric Blueprint Rings for Engineering Depth */}
-      <div className="absolute w-[180px] h-[180px] sm:w-[300px] sm:h-[300px] lg:w-[410px] lg:h-[410px] xl:w-[440px] xl:h-[440px] rounded-full border border-[#4452E6]/20 bg-white/30 pointer-events-none" />
+      {/* Blueprint Radial Ring & Outer Accent */}
       <div className="absolute w-[210px] h-[210px] sm:w-[350px] sm:h-[350px] lg:w-[460px] lg:h-[460px] xl:w-[490px] xl:h-[490px] rounded-full border border-[#CBD5E1]/60 pointer-events-none border-dashed" />
 
       {/* Enlarged Floating Avatar Sphere with Dynamic 3D Spring Tilt (0 React Re-renders) */}

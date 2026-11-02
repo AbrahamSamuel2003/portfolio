@@ -96,14 +96,18 @@ const About = memo(function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
-                className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:border-[#4452E6]/35 hover:shadow-md transition-[border-color,box-shadow] duration-200 flex flex-col justify-between space-y-4 group card-stable text-left"
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 350, damping: 25 } }}
+                className="relative p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:shadow-xl transition-[border-color,box-shadow] duration-300 flex flex-col justify-between space-y-4 group card-stable text-left overflow-hidden cursor-default"
               >
+                {/* Diagonal Light Sheen / Polish Sweep Effect */}
+                <div className="absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none -skew-x-12 z-20" />
+
                 {/* Card Top: Category, Icon & Status Badge */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2.5">
                       <div
-                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:shadow-xs transition-all duration-300"
                         style={{ backgroundColor: card.bgAccent, color: card.accent }}
                       >
                         <Icon size={18} />
@@ -133,7 +137,7 @@ const About = memo(function About() {
                   <div className="space-y-2 pt-1">
                     {card.highlights.map((highlight, hIdx) => (
                       <div key={hIdx} className="flex items-start gap-2 text-xs text-[#1E293B] leading-relaxed">
-                        <CheckCircle2 size={14} className="text-[#4452E6] mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: card.accent }} />
                         <span>{highlight}</span>
                       </div>
                     ))}
