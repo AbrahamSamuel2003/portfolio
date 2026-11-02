@@ -79,15 +79,15 @@ const ProjectAccordionDeck = memo(function ProjectAccordionDeck({
                 </div>
               )}
 
-              {/* EXPANDED CONTENT: Ultra-Minimal Frosted Floating Bar */}
+              {/* EXPANDED CONTENT: Frosted Glass Floating Bar */}
               {isActive && (
-                <div className="absolute bottom-3 inset-x-3 p-3.5 sm:p-4 rounded-xl bg-white/94 backdrop-blur-md border border-white/80 shadow-md z-10 flex items-center justify-between gap-3 animate-fade-in transition-all duration-300">
+                <div className="absolute bottom-3 inset-x-3 p-3.5 sm:p-4 rounded-xl bg-white/80 backdrop-blur-xl border border-white/60 shadow-lg z-10 flex items-center justify-between gap-3 animate-fade-in transition-all duration-300">
                   {/* Category & Project Title */}
                   <div className="min-w-0 space-y-0.5 text-left">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#4452E6] font-semibold block">
                       {project.category}
                     </span>
-                    <h3 className="text-base sm:text-lg font-serif font-bold text-[#1E293B] tracking-tight truncate">
+                    <h3 className="text-base sm:text-lg font-serif font-bold text-[#0F172A] tracking-tight truncate">
                       {project.title}
                     </h3>
                   </div>
