@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import avatarImg from "../../assets/avatar-animated.webp";
+import heroImg from "../../assets/hero-avatar.jpg";
 
 const HeroAvatar = memo(function HeroAvatar() {
   const mouseX = useMotionValue(0);
@@ -31,16 +31,13 @@ const HeroAvatar = memo(function HeroAvatar() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-[280px] sm:max-w-[420px] lg:max-w-[480px] xl:max-w-[520px] h-[175px] sm:h-[340px] lg:h-[460px] xl:h-[490px] mx-auto flex items-center justify-center select-none card-stable"
+      className="relative w-auto max-w-none py-0 mx-auto flex items-center justify-end lg:justify-center select-none card-stable"
     >
-      {/* Multi-layered Ambient Light & Blueprint Radial Rings */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#4452E6]/20 via-[#2C3480]/10 to-transparent rounded-full blur-2xl sm:blur-3xl pointer-events-none" />
-      
-      {/* Blueprint Radial Ring & Outer Accent */}
-      <div className="absolute w-[210px] h-[210px] sm:w-[350px] sm:h-[350px] lg:w-[460px] lg:h-[460px] xl:w-[490px] xl:h-[490px] rounded-full border border-[#CBD5E1]/60 pointer-events-none border-dashed" />
-
-      {/* Enlarged Floating Avatar Sphere with Dynamic 3D Spring Tilt (0 React Re-renders) */}
+      {/* Floating Portrait Card with Solid Blue Border, Smooth Settle & Dynamic 3D Spring Tilt */}
       <motion.div
+        initial={{ opacity: 0, y: 32, scale: 0.94 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1], delay: 0.1 }}
         style={{
           x: smoothX,
           y: smoothY,
@@ -48,22 +45,21 @@ const HeroAvatar = memo(function HeroAvatar() {
           rotateY,
           transformPerspective: 1000,
         }}
-        className="relative z-10 w-[145px] h-[145px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] xl:w-[380px] xl:h-[380px] rounded-full p-1.5 sm:p-2.5 lg:p-3 bg-gradient-to-tr from-[#2C3480] via-[#4452E6] to-[#60A5FA] shadow-xl sm:shadow-2xl shadow-[#2C3480]/25 will-change-transform"
+        className="relative z-10 w-[118px] xs:w-[130px] sm:w-[160px] lg:w-[320px] xl:w-[350px] aspect-[522/678] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden border-2 sm:border-[3px] lg:border-4 border-[#4452E6] shadow-md shadow-[#2C3480]/10 bg-white will-change-transform flex-shrink-0"
       >
-        <div className="w-full h-full rounded-full overflow-hidden bg-white p-1 shadow-inner">
-          <div className="w-full h-full rounded-full overflow-hidden bg-slate-50">
-            <img
-              src={avatarImg}
-              alt="Abraham Samuel T — Full Stack Developer"
-              width="400"
-              height="400"
-              className="w-full h-full object-cover object-center"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-        </div>
+        <motion.img
+          src={heroImg}
+          alt="Abraham Samuel T — Full Stack Developer"
+          width="522"
+          height="678"
+          initial={{ scale: 1.15 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}
+          className="w-full h-full object-cover object-[center_12%]"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
       </motion.div>
     </div>
   );
